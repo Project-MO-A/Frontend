@@ -211,15 +211,18 @@ function Setting() {
     reader.onloadend = () => {
       const profileImgDataUrl = reader.result;
       setProfileImg(profileImgDataUrl);
+      console.log(profileImgDataUrl);
     };
-
+    
     reader.readAsDataURL(event.target.files[0]);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("image", profileImg);
+    let profileURl = profileImg.replace("data:image/jpeg;base64,", '');
+    console.log("profileURl: ", profileURl);
+    formData.append("image", file);
 
     if (newPwd.trim() !== "" && currentPwd.trim() === "") {//현재 비밀번호를 입력하지 않고 새 비밀번호 입력시
       alert("현재 비밀번호를 입력해주세요!");
@@ -232,6 +235,17 @@ function Setting() {
       alert("새 비밀번호와 비밀번호 확인이 일치하지 않습니다!");
       return;
     }
+
+    let config = {
+      method: 'patch',
+      maxBodyLength: Infinity,
+      url: 'http://13.125.111.131:8080/user/info/basic',
+      headers: {
+        "Authorization": localStorage.getItem("Authorization"),
+        "AuthorizationRefresh": localStorage.getItem("AuthorizationRefresh"),
+      },
+      image: formData
+    }
    const userData =  ({
       "name": usernameInput,
       "nickname": nicknameInput,
@@ -239,11 +253,16 @@ function Setting() {
       "newPassword" : newPwd
     })
     formData.append("request", new Blob([JSON.stringify(userData)], {type: "application/json"}))
-    
+  
+    axios.request(config).then((response) => {
+      console.log(response);
+    })
+  /*
    axios.patch("http://13.125.111.131:8080/user/info/basic", formData, {
     headers: {
       "Authorization": localStorage.getItem("Authorization"),
       "AuthorizationRefresh": localStorage.getItem("AuthorizationRefresh"),
+      
     }
   })
   .then((response) => {
@@ -268,6 +287,8 @@ function Setting() {
       console.log(error);
     });
   };
+  */
+};
   return (
         <Wrapper>
           <ProfileImgContainer>
