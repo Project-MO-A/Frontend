@@ -43,7 +43,7 @@ export default function Category({ handleCategoriesChange, isEdit, Editdata }) {
     { value: "AUTONOMY", label: "자율" },
     { value: "HOBBY", label: "취미" },
     { value: "EMPLOYMENT", label: "취업" },
-    { value: "ETC", label: "기타" }
+    { value: "ETC", label: "기타" },
   ];
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export default function Category({ handleCategoriesChange, isEdit, Editdata }) {
         고시: "EXAMINATION",
         면접: "INTERVIEW",
         자율: "AUTONOMY",
-        기타: "ETC"
+        기타: "ETC",
       };
       setSelected(editDataMap[Editdata]);
     }
@@ -67,12 +67,11 @@ export default function Category({ handleCategoriesChange, isEdit, Editdata }) {
   }, []);
 
   const handleCategory = (event) => {
-    if (event.target.value !== undefined )
-    {
+    if (event.target.value !== undefined) {
       setSelected(event.target.value);
       handleCategoriesChange(event.target.value);
-  }
-  }
+    }
+  };
 
   return (
     <CategoryBlock>

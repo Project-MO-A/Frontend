@@ -65,7 +65,6 @@ const PostTab = () => {
     (item) => parseInt(item.recruitmentId) === parseInt(postId)
   );
 
-  console.log(userInfoArr);
   const [user, setUser] = useState(data.postUser);
   const tabArr = [
     {

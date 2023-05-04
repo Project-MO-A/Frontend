@@ -126,7 +126,7 @@ const MyPage = () => {
         console.log(data);
         setPopularity(data.popularity.rate);
         if(data.image !== null) {
-          setProfileImg("data:image/jpeg;base64," + data?.image);
+          //setProfileImg("data:image/jpeg;base64," + data?.image);
         }
       })
       .catch((error) => {
@@ -204,7 +204,7 @@ const MyPage = () => {
     <Wrapper>
       <SidebarContainer>
         <SidebarTab>
-          <Avatar src={profileImg} alt="프로필 사진"></Avatar>
+          <Avatar src={profileImg} alt="프로필사진"></Avatar>
           <PopularityContainer>
             <UserPopularity rate={popularity} />
           </PopularityContainer>

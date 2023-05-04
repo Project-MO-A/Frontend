@@ -40,10 +40,12 @@ const ApplicantListItem = ({ item, fetchApproved, fetchRefuse }) => {
 
   const apporvedHandler = (applyId) => {
     fetchApproved(applyId);
+    setOpenInfo(false);
   };
 
   const refuseHandler = (applyId) => {
     fetchRefuse(applyId);
+    setOpenInfo(false);
   };
 
   return (

@@ -6,6 +6,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { userStation } from "../../Recoil/atoms";
+import KakaoMap from "../../Common/KakaoMap";
+import ModalLocation from "./ModalLocation";
 
 const NoticeListWrap = styled.div`
   width: 1045px;
@@ -35,7 +37,7 @@ const NoticeListDate = styled.span`
 `;
 
 const RecommendLoc = styled.span`
-  margin-left: 5px;
+  margin-left: 25px;
 `;
 
 const NoticeDropdownDiv = styled.div`
@@ -92,6 +94,13 @@ const VoteFinishNotice = styled.p`
   left: 5px;
 `;
 
+const LocationBtn = styled.button`
+  border-radius: 5px;
+  background-color: #f2fefd;
+  border: none;
+  font-weight: bold;
+  padding: 3px 12px;
+`;
 const NoticeItem = ({
   newnotice,
   onNoticeDelete,
@@ -103,12 +112,13 @@ const NoticeItem = ({
   fetchUpdateAttend,
   fetchFinishVote,
 }) => {
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [date, setDate] = useState(newnotice.createdDate);
   const [isEdit, setIsEdit] = useState(false);
   const [isVote, setIsVote] = useState(true);
   const [curContent, setCurContent] = useState(newnotice.content);
   const { postId } = useParams();
-  const station = useRecoilValue(userStation);
+  const Location = useRecoilValue(userStation);
+  const [isModal, setIsModal] = useState(false);
 
   const AttendanceHandler = (noticeId) => {
     fetchAttend(noticeId);
@@ -139,23 +149,30 @@ const NoticeItem = ({
 
   return (
     <>
+      {/* 글쓴이면 true / 글쓴이가 아니면 false 작용 */}
       {author ? (
         <>
+          {/* 글쓴이인 경우 */}
           <NoticeListWrap
+            // 투표마감버튼을 눌렀거나 혹은 공지글의 투표 마감값이(finishVote) true인 공지글일때
             className={!isVote || newnotice.finishVote ? "vote_done" : ""}
           >
             <NoticeListHeader>
               <div>
                 <NoticeListDate>
                   {date}
+                  {/* 투표마감버튼을 눌렀거나 혹은 공지글의 투표 마감값이(fisihsVote) true인 공지글일때 */}
                   {(!isVote || newnotice.finishVote) && (
                     <RecommendLoc>
-                      추천 지역: {newnotice.recommendLocation}
+                      <LocationBtn onClick={() => setIsModal(!isModal)}>
+                        추천 지역
+                      </LocationBtn>
                     </RecommendLoc>
                   )}
                 </NoticeListDate>
               </div>
               <NoticeDropdownDiv>
+                {/* 투표마감버튼을 누르지않은 상태, 현재 글쓴이인 경우로 author에 true를 전달 */}
                 <Dropdownbutton
                   isVote={isVote}
                   author={true}
@@ -168,12 +185,13 @@ const NoticeItem = ({
                 />
               </NoticeDropdownDiv>
             </NoticeListHeader>
-
+            {/* 수정 중이 아닐 때 */}
             {!isEdit ? (
               <>
                 <NoticeListContent>{newnotice.content}</NoticeListContent>
               </>
             ) : (
+              // 수정 중 일 때
               <NoticeListContent>
                 <NoticeEditInput
                   value={curContent}
@@ -191,7 +209,7 @@ const NoticeItem = ({
                 </NoticeEditBtn>
               </NoticeListContent>
             )}
-
+            {/* 투표기능이 있는글이고 수정중이 아니고 투표마감버튼 누르지않았고 공지글의 투표 마감값이(fisihsVote) false일때 */}
             {newnotice.checkVote &&
               !isEdit &&
               isVote &&
@@ -209,7 +227,7 @@ const NoticeItem = ({
                   </VotingNegative>
                 </VotingBtnDiv>
               )}
-
+            {/* 투표마감버튼을 눌렀거나 공지글의 투표 마감값이(fisihsVote) true일때 */}
             {(!isVote || newnotice.finishVote) && (
               <VoteFinishNotice>투표가 마감되었습니다</VoteFinishNotice>
             )}
@@ -217,21 +235,27 @@ const NoticeItem = ({
         </>
       ) : (
         <>
+          {/* 글쓴이가 아닐 때 */}
+          {/* 투표마감버튼을 눌렀거나 혹은 공지글의 투표 마감값이(finishVote) true인 공지글일때 */}
           <NoticeListWrap
             className={!isVote || newnotice.finishVote ? "vote_done" : ""}
           >
             <NoticeListHeader>
               <div>
+                {/* 투표마감버튼을 눌렀거나 혹은 공지글의 투표 마감값이(finishVote) true인 공지글일때 */}
                 <NoticeListDate>
                   {date}
                   {(!isVote || newnotice.finishVote) && (
                     <RecommendLoc>
-                      추천 지역: {newnotice.recommendLocation}
+                      <LocationBtn onClick={() => setIsModal(!isModal)}>
+                        추천 지역
+                      </LocationBtn>
                     </RecommendLoc>
                   )}
                 </NoticeListDate>
               </div>
               <NoticeDropdownDiv>
+                {/* 현재 글쓴이가 아니므로 author에 false를 전달 */}
                 <Dropdownbutton
                   author={false}
                   newnotice={newnotice}
@@ -245,7 +269,7 @@ const NoticeItem = ({
             <>
               <NoticeListContent>{newnotice.content}</NoticeListContent>
             </>
-
+            {/* 투표기능이 있는글이고 공지글의 투표 마감값이(fisihsVote) false일때  */}
             {newnotice.checkVote && !newnotice.finishVote && (
               <VotingBtnDiv>
                 <VotingPositive
@@ -260,13 +284,15 @@ const NoticeItem = ({
                 </VotingNegative>
               </VotingBtnDiv>
             )}
-
+            {/* 투표마감버튼을 눌렀거나  공지글의 투표 마감값이(fisihsVote) true일때*/}
             {(!isVote || newnotice.finishVote) && (
               <VoteFinishNotice>투표가 마감되었습니다</VoteFinishNotice>
             )}
           </NoticeListWrap>
         </>
       )}
+
+      <ModalLocation isModal={isModal} newnotice={newnotice} />
     </>
   );
 };

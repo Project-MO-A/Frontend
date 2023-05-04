@@ -72,7 +72,6 @@ const AddNotice = () => {
       })
       .then((response) => {
         setNewNotice(response.data.notices);
-        console.log(response.data.notices);
       });
   };
 
@@ -117,33 +116,28 @@ const AddNotice = () => {
             "AuthorizationRefresh"
           ),
         },
-      },
-      { responseType: "json" }
+      }
     );
     setNewNotice(newNotice.filter((item) => item.noticeId !== id));
   };
 
   const onEditNotice = async (id, newContent) => {
-    await axios
-      .patch(
-        `http://13.125.111.131:8080/recruitment/${postId}/notice/${id}`,
-        {
-          content: newContent,
-          checkVote: "",
-        },
-        {
-          headers: {
-            Authorization: window.localStorage.getItem("Authorization"),
+    await axios.patch(
+      `http://13.125.111.131:8080/recruitment/${postId}/notice/${id}`,
+      {
+        content: newContent,
+        checkVote: "",
+      },
+      {
+        headers: {
+          Authorization: window.localStorage.getItem("Authorization"),
 
-            AuthorizationRefresh: window.localStorage.getItem(
-              "AuthorizationRefresh"
-            ),
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response);
-      });
+          AuthorizationRefresh: window.localStorage.getItem(
+            "AuthorizationRefresh"
+          ),
+        },
+      }
+    );
 
     setNewNotice(
       newNotice.map((item) =>
@@ -248,6 +242,8 @@ const AddNotice = () => {
 
   return (
     <div>
+      {/* 현재 모집글의 글쓴이id와 현재 로그인한 유저의 id가 일치하는가?
+          즉 글쓴이인지 확인 */}
       {user.userId === info.userId ? (
         <>
           <h1>공지사항 추가</h1>
@@ -275,6 +271,7 @@ const AddNotice = () => {
               </NoticeAddBtnDiv>
             </form>
           </div>
+          {/* 글쓴이인 경우로 author값에 true를 전달 */}
           {newNotice.map((newnotice) => (
             <div key={newnotice.noticeId}>
               <NoticeItem
@@ -293,6 +290,8 @@ const AddNotice = () => {
         </>
       ) : (
         <>
+          {/* 글쓴이가 아닌 경우
+            author값에 false를 전달 */}
           <h1>공지사항</h1>
 
           {newNotice.map((newnotice) => (

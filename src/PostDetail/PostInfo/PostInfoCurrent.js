@@ -91,31 +91,26 @@ const PostInfoCurrent = () => {
       position: id,
     };
     if (!applyToggle) {
-      await axios
-        .post(
-          `http://13.125.111.131:8080/recruitment/${postId}/apply`,
-          null,
+      await axios.post(
+        `http://13.125.111.131:8080/recruitment/${postId}/apply`,
+        null,
 
-          {
-            responseType: "json",
-            headers: {
-              Authorization: window.localStorage.getItem("Authorization"),
+        {
+          responseType: "json",
+          headers: {
+            Authorization: window.localStorage.getItem("Authorization"),
 
-              AuthorizationRefresh: window.localStorage.getItem(
-                "AuthorizationRefresh"
-              ),
-            },
+            AuthorizationRefresh: window.localStorage.getItem(
+              "AuthorizationRefresh"
+            ),
+          },
 
-            params,
-          }
-        )
-        .then((response) => {
-          console.log(response.data);
-        });
+          params,
+        }
+      );
     }
     fetchList();
   };
-  console.log(etcArr);
 
   return (
     <div>

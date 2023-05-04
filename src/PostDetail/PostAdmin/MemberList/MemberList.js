@@ -70,7 +70,6 @@ const MemberList = () => {
       )
       .then((response) => {
         setMembers(response.data);
-        console.log(response.data);
       });
   };
   const fetchPost = async () => {
@@ -86,8 +85,6 @@ const MemberList = () => {
       })
       .then((response) => {
         setPost(response.data.recruitInfo);
-
-        console.log(response.data);
       });
   };
 

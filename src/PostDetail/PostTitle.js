@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
-import { myPostData, titleState, userInfo } from "../Recoil/atoms";
+import { myPostData, titleState } from "../Recoil/atoms";
 import { useState } from "react";
+import TransAddress from "./UserInfo/TransAddress";
+import axios from "axios";
 
 const PostTitlewrap = styled.div`
   margin-top: 34px;
@@ -68,11 +70,43 @@ const PostTags = styled.span`
   color: gray;
 `;
 
+const PreferLoc = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+`;
+
 const PostTitle = () => {
   const data = useRecoilValue(myPostData);
   const titles = useRecoilValue(titleState);
   const [user, setUser] = useState(data.postUser);
-  const info = useRecoilValue(userInfo);
+  const [Author, setAuthor] = useState(0);
+
+  const URL = process.env.REACT_APP_URL;
+
+  useEffect(() => {
+    fetchPostUserInfo();
+  }, []);
+
+  const fetchPostUserInfo = async () => {
+    const params = {
+      userId: user.userId,
+    };
+    await axios
+      .get("http://13.125.111.131:8080/user/info/profile", {
+        headers: {
+          Authorization: window.localStorage.getItem("Authorization"),
+
+          AuthorizationRefresh: window.localStorage.getItem(
+            "AuthorizationRefresh"
+          ),
+        },
+        params,
+      })
+      .then((response) => {
+        setAuthor(response.data);
+      });
+  };
 
   return (
     <div>
@@ -93,6 +127,13 @@ const PostTitle = () => {
             <PostTags key={index}>#{item}</PostTags>
           ))}
         </PostTagsDiv>
+        <PreferLoc>
+          선호지역 :
+          <TransAddress
+            lat={Author.locationLatitude}
+            lng={Author.locationLongitude}
+          />
+        </PreferLoc>
       </PostRecruitwrap>
     </div>
   );

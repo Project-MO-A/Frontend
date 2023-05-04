@@ -25,8 +25,9 @@ const PostInfoComment = () => {
   const { postId } = useParams();
   const [newComment, setNewComment] = useState([]);
   const [comment_count, setComment_count] = useState(0);
+
   const fetchComment = async () => {
-    const response = await axios
+    await axios
       .get(`http://13.125.111.131:8080/recruitment/${postId}`, {
         headers: {
           Authorization: window.localStorage.getItem("Authorization"),
@@ -84,7 +85,6 @@ const PostInfoComment = () => {
       );
       fetchComment();
       setComment("");
-      setComment_count(comment_count + 1);
     }
   };
 
@@ -130,9 +130,10 @@ const PostInfoComment = () => {
           },
         }
       );
-      setNewComment(newComment.filter((item) => item.replyId !== id));
-      setComment_count(comment_count - 1);
+      fetchComment();
     }
+
+    // setNewComment(newComment.filter((item) => item.replyId !== id));
   };
 
   const onReplySubmit = async (reply, id) => {

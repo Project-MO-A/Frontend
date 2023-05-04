@@ -83,7 +83,7 @@ const StarContaienr = styled.div`
 
 const IntroContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border: solid #bbb9b9;
   border-radius: 4px;
   width: 500px;
@@ -183,7 +183,8 @@ const InfoDetail = ({
     const params = { userId: item.userId };
     await axios
       .get(
-        "http://13.125.111.131:8080/user/info/profile",
+        "http://localhost:3000/data/userData.json",
+        //"http://13.125.111.131:8080/user/info/profile",
 
         {
           headers: {

@@ -19,7 +19,7 @@
      ├── Header
      │    └── Header.js
      ├── Home
-     │    ├── HomeTab
+     │    └── HomeTab
      │        ├── HomeTab.js
      │        └── HomeTabComponent.js
      ├── LogIn
@@ -27,11 +27,9 @@
      │    ├── SignInForm.js
      │    └── SingUpPage.js
      ├── MyPage
-     │    ├── Component
+     │    ├── MyPageComponent
      │    │   ├── ProfileLink.js
      │    │   └── ProfileTag.js
-     │    ├── Sidebar
-     │    │    └── Sidebar.js
      │    ├── Likedlist.js
      │    ├── MyActivity.js
      │    ├── MyPage.js
@@ -42,9 +40,7 @@
      │    ├── BasicInfo
      │    │   ├── Postion
      │    │   │   ├── Postion.js
-     │    │   │   ├── PostionList.js
-     │    │   │   ├── PostionListItem.js
-     │    │   │   └── PostionTemplate.js
+     │    │   │   └── PostionListItem.js
      │    │   ├── BasicInfo.js
      │    │   ├── Category.js
      │    │   └── TagBox.js
@@ -53,11 +49,14 @@
      │    ├── Post.js
      │    └── WriteButton.js
      ├── PostDetail
-     ├── component
+     ├── Common
      │    ├── KakaoMap.js
      │    ├── PostComponent.js
+     │    ├── NotoSansKR-Regular.otf
+     │    ├── profileImg.png
      │    └── UserPopularity.js
      ├── App.js
+     ├── index.css
      └── index.js
 
 ```

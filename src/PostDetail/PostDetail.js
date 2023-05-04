@@ -19,46 +19,54 @@ const PostDetail = () => {
   const [Info, setInfo] = useRecoilState(userInfo);
   const { postId } = useParams();
 
-  const fetchInfo = async () => {
-    await axios
-      .get("http://13.125.111.131:8080/user/info/profile", {
-        headers: {
-          Authorization: window.localStorage.getItem("Authorization"),
+  // const fetchInfo = async () => {
+  //   await axios
+  //     .get("http://13.125.111.131:8080/user/info/profile", {
+  //       headers: {
+  //         Authorization: window.localStorage.getItem("Authorization"),
 
-          AuthorizationRefresh: window.localStorage.getItem(
-            "AuthorizationRefresh"
-          ),
-        },
-      })
-      .then((response) => {
-        setInfo(response.data);
-        console.log(response.data);
-      });
-  };
+  //         AuthorizationRefresh: window.localStorage.getItem(
+  //           "AuthorizationRefresh"
+  //         ),
+  //       },
+  //     })
+  //     .then((response) => {
+  //       setInfo(response.data);
+  //     });
+  // };
 
   useEffect(() => {
     axios
-      .get(`http://13.125.111.131:8080/recruitment/${postId}`, {
-        headers: {
-          Authorization: window.localStorage.getItem("Authorization"),
+      .get(
+        `http://localhost:3000/data/postDetail.json`
+        // .get(`http://13.125.111.131:8080/recruitment/${postId}`,
+        // {
+        //   headers: {
+        //     Authorization: window.localStorage.getItem("Authorization"),
 
-          AuthorizationRefresh: window.localStorage.getItem(
-            "AuthorizationRefresh"
-          ),
-        },
-      })
+        //     AuthorizationRefresh: window.localStorage.getItem(
+        //       "AuthorizationRefresh"
+        //     ),
+        //   },
+        // }
+      )
       .then((response) => {
-        setPost(response.data.recruitInfo);
-        setIsLoading(false);
-        setTitles(response.data.recruitInfo.state);
-        console.log(response.data);
-      })
+        if (response.data.detail) {
+          const currentData = response.data.detail.find(
+            (item) => parseInt(item.postId) === parseInt(postId)
+          );
 
-      .catch((error) => {
-        console.error("Error:", error);
+          setPost(currentData.recruitInfo);
+          setIsLoading(false);
+          setTitles(currentData.recruitInfo.state);
+        }
+
+        // setPost(response.data.recruitInfo);
+        // setIsLoading(false);
+        // setTitles(response.data.recruitInfo.state);
       });
 
-    fetchInfo();
+    // fetchInfo();
   }, [setPost, setTitles, postId]);
 
   return (

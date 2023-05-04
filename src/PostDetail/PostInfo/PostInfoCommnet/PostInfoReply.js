@@ -58,7 +58,7 @@ const ReplyUl = styled.ul`
   list-style: none;
 `;
 
-const PostInfoReply = ({ item, onReplySubmit, value }) => {
+const PostInfoReply = ({ item, onReplySubmit, value, fetchComment }) => {
   const [reply, setReply] = useState("");
   const { postId } = useParams();
   const [newReply, setNewReply] = useState([]);
@@ -98,6 +98,7 @@ const PostInfoReply = ({ item, onReplySubmit, value }) => {
           },
         }
       );
+      fetchComment();
     }
 
     setNewReply(newReply.filter((it) => it.replyId !== id));

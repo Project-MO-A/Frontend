@@ -69,7 +69,7 @@ const PostCommentItem = ({ item, onDeleteComment, onEditComment }) => {
   return (
     <div>
       <CommentUserName>{item.author}</CommentUserName>
-      <CommentTime>{item.createDate}</CommentTime>
+      <CommentTime>{item.createdDate}</CommentTime>
       {info.userId === item.userId ? (
         <>
           {" "}

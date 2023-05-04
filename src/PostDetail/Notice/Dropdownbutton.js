@@ -126,6 +126,7 @@ const Dropdownbutton = ({
 
   return (
     <div ref={dropRef}>
+      {/* 글쓴이거나 혹은 투표기능이 있는 공지글일 때 */}
       {author || newnotice.checkVote ? (
         <button onClick={() => setDropOpen(!dropOpen)}>=</button>
       ) : (
@@ -133,7 +134,9 @@ const Dropdownbutton = ({
       )}
 
       {author ? (
+        // 글쓴이 일 때
         <>
+          {/* 드롭버튼을 누른상태이며 투표기능이 있는 공지글일때 */}
           {dropOpen &&
             (newnotice.checkVote ? (
               <>
@@ -146,6 +149,7 @@ const Dropdownbutton = ({
                     참여도 수정▶
                   </DropDownList>
                   <>
+                    {/* 투표마감버튼을 누르지않은 투표기능이 있는 상태일 때 */}
                     {isVote ? (
                       <DropDownList
                         onClick={() => VotingToggle(newnotice.noticeId)}
@@ -153,6 +157,7 @@ const Dropdownbutton = ({
                         투표마감
                       </DropDownList>
                     ) : (
+                      // 투표기능이 없는 상태일때 투표마감은 안보이게함
                       <></>
                     )}
                   </>
@@ -163,6 +168,7 @@ const Dropdownbutton = ({
                   </DropDownList>
                 </DropdownDiv>
                 {editHover ? (
+                  // 호버중일때
                   <EditParticipantDiv
                     onMouseOver={() => setEditHover(true)}
                     onMouseLeave={() => setEditHover(false)}
@@ -174,6 +180,7 @@ const Dropdownbutton = ({
                           <ImCheckmark />
                         </VotingPositive>
                       </AttendTitle>
+
                       {newnotice.members?.ATTENDANCE.map((item) => (
                         <ParticipantUl key={item.applimentMemberId}>
                           <ParticipantList>{item.memberName}</ParticipantList>
@@ -236,10 +243,12 @@ const Dropdownbutton = ({
                     </AttendanceDiv>
                   </EditParticipantDiv>
                 ) : (
+                  // 호버중이 아닐때
                   ""
                 )}
               </>
             ) : (
+              // 투표기능이 없는 글일 때
               <DropdownDiv className="simple_active">
                 <DropDownList onClick={isEditDeliver}>수정</DropDownList>
                 <DropDownList
@@ -252,6 +261,8 @@ const Dropdownbutton = ({
         </>
       ) : (
         <>
+          {/* 글쓴이가 아닌상태 */}
+          {/* 드롭버튼을 누른상태이며 투표기능이 있는 글일 때 */}
           {dropOpen &&
             (newnotice.checkVote ? (
               <>
@@ -264,6 +275,7 @@ const Dropdownbutton = ({
                   </DropDownList>
                 </DropdownDiv>
                 {editHover ? (
+                  // 호버 중일 때
                   <EditParticipantDiv
                     onMouseOver={() => setEditHover(true)}
                     onMouseLeave={() => setEditHover(false)}
@@ -305,10 +317,12 @@ const Dropdownbutton = ({
                     </AttendanceDiv>
                   </EditParticipantDiv>
                 ) : (
+                  // 호버중이 아닐 때
                   ""
                 )}
               </>
             ) : (
+              // 드롭버튼도 안눌렀고, 투표기능도 없는 글일때
               ""
             ))}
         </>

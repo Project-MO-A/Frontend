@@ -66,7 +66,7 @@ const PostReplyItem = ({ item, onDeleteReply, onEditReply }) => {
   return (
     <div>
       <ReplyUserName>{item.author}</ReplyUserName>
-      <ReplyTime> {item.createDate}</ReplyTime>
+      <ReplyTime> {item.createdDate}</ReplyTime>
       {info.userId === item.userId ? (
         <>
           {" "}
