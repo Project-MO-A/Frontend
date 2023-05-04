@@ -110,10 +110,11 @@ const MyPage = () => {
     fetch(`http://localhost:3000/data/userData.json`, {
     //fetch(`http://13.125.111.131:8080/user/info/profile`, {
       method: "GET",
+      /*
       headers: {
         Authorization: localStorage.getItem("Authorization"),
         AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh")
-      }
+      }*/
     })
       .then((response) => {
         if (response.status !== 200) {
@@ -122,7 +123,7 @@ const MyPage = () => {
         return response.json();
       })
       .then((data) => {
-        //console.log(data);
+        console.log(data);
         setPopularity(data.popularity.rate);
         if(data.image !== null) {
           //setProfileImg("data:image/jpeg;base64," + data?.image);
@@ -132,7 +133,7 @@ const MyPage = () => {
         console.error("Error:", error);
       });
   }, []);
-  //console.log(data);
+
   const [activeTab, setActiveTab] = useState(0);
   const onClickTab = (tabId) => {
     setActiveTab(tabId);

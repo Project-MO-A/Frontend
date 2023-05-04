@@ -92,6 +92,7 @@ const Profile = () => {
         }
       })
       .then((response) => {
+        console.log(response.data.image);
         setData(response.data);
         setTags(response.data.interests);
         setLinks(response.data.link);
