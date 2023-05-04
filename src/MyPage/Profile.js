@@ -84,7 +84,8 @@ const Profile = () => {
 
   const fetchInfo = async () => {
     await axios
-      .get(`http://13.125.111.131:8080/user/info/profile`, {
+      .get(`http://localhost:3000/data/userData.json`, {
+      //.get(`http://13.125.111.131:8080/user/info/profile`, {
         headers: {
           Authorization: localStorage.getItem("Authorization"),
           AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh")

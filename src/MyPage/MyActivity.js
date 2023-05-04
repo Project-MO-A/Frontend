@@ -197,7 +197,8 @@ const MyActivity = () => {
   const [userActivity, setUserActivity] = useState({});
 
   const getActivity = () => {
-    fetch("http://13.125.111.131:8080/user/info/activity", {
+    fetch("http://localhost:3000/data/userActivity.json", {
+    //fetch("http://13.125.111.131:8080/user/info/activity", {
       method: "GET",
       headers: {
         Authorization: localStorage.getItem("Authorization"),

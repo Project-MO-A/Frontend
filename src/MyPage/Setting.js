@@ -142,7 +142,8 @@ function Setting() {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    fetch(`http://13.125.111.131:8080/user/info/profile`, {
+    fetch(`http://localhost:3000/data/userData.json`, {
+    //fetch(`http://13.125.111.131:8080/user/info/profile`, {
       method: "GET",
       headers: {
         Authorization: localStorage.getItem("Authorization"),
@@ -274,7 +275,7 @@ function Setting() {
   return (
     <Wrapper>
       <ProfileImgContainer>
-        <Avatar src={profileImg} alt="프로필 사진" />
+        <Avatar src={profile} alt="프로필 사진" />
         <EditIcon htmlFor="profile-image-upload">
           <AiOutlineEdit />
           <input
