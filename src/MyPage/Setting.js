@@ -142,8 +142,7 @@ function Setting() {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:3000/data/userData.json`, {
-    //fetch(`http://13.125.111.131:8080/user/info/profile`, {
+    fetch(`http://13.125.111.131:8080/user/info/profile`, {
       method: "GET",
       headers: {
         Authorization: localStorage.getItem("Authorization"),

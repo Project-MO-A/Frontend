@@ -12,7 +12,7 @@ const EmptyPost = styled.div`
   display: flex;
   width: 650px;
   height: 300px;
-  background: #E8E8E8;
+  background: #e8e8e8;
   border-radius: 4px;
   justify-content: center;
   align-items: center;
@@ -36,24 +36,23 @@ const Likedlist = () => {
   const [likedPost, setLikedPost] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/data/userLiked.json", {
-    //fetch("http://13.125.111.131:8080/user/info/concern", {
+    fetch("http://13.125.111.131:8080/user/info/concern", {
       method: "GET",
       headers: {
         Authorization: localStorage.getItem("Authorization"),
         AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh"),
-      }
+      },
     })
-    .then((response) => {
-      if (response.status !== 200) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      setLikedPost(data.writing);
-      console.log(data.writing);
-    })
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setLikedPost(data.writing);
+        console.log(data.writing);
+      })
       .catch((error) => {
         console.error("Error:", error);
       });
@@ -61,19 +60,27 @@ const Likedlist = () => {
 
   return (
     <Wrapper>
-        <h3>내 관심글</h3>
-        {likedPost?.length < 1 ? <EmptyPost>관심글을 등록해보세요!</EmptyPost> :
-            <ComponentWrapper>
-              {likedPost?.map((post, index)=> (
-              <PostComponent key={index} 
+      <h3>내 관심글</h3>
+      {likedPost?.length < 1 ? (
+        <EmptyPost>관심글을 등록해보세요!</EmptyPost>
+      ) : (
+        <ComponentWrapper>
+          {likedPost?.map((post, index) => (
+            <PostComponent
+              key={index}
               type="MyLike"
               id={post.id}
               title={post.title}
-              author={post.author} category={post.category} tags={post.tags} recruitStatus={post.recruitStatus} date={post.createdDate}replyCount={post.replyCount}
-              />
-            ))}
-            </ComponentWrapper>
-        }
+              author={post.author}
+              category={post.category}
+              tags={post.tags}
+              recruitStatus={post.recruitStatus}
+              date={post.createdDate}
+              replyCount={post.replyCount}
+            />
+          ))}
+        </ComponentWrapper>
+      )}
     </Wrapper>
   );
 };

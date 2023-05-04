@@ -37,8 +37,8 @@ const MyPostList = () => {
 
   const getPostList = () => {
     axios
-    .get("http://localhost:3000/data/userWriting.json", {
-      //.get("http://13.125.111.131:8080/user/info/writing", {
+
+      .get("http://13.125.111.131:8080/user/info/writing", {
         headers: {
           Authorization: window.localStorage.getItem("Authorization"),
 
@@ -53,7 +53,7 @@ const MyPostList = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
-  }
+  };
   useEffect(() => {
     getPostList();
   }, []);

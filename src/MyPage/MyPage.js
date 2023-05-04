@@ -107,13 +107,12 @@ const MyPage = () => {
   const [getProfileImg, setProfileImg] = useState(profileImg);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/data/userData.json`, {
-    //fetch(`http://13.125.111.131:8080/user/info/profile`, {
+    fetch(`http://13.125.111.131:8080/user/info/profile`, {
       method: "GET",
       headers: {
         Authorization: localStorage.getItem("Authorization"),
-        AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh")
-      }
+        AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh"),
+      },
     })
       .then((response) => {
         if (response.status !== 200) {
@@ -124,7 +123,7 @@ const MyPage = () => {
       .then((data) => {
         //console.log(data);
         setPopularity(data.popularity.rate);
-        if(data.image !== null) {
+        if (data.image !== null) {
           //setProfileImg("data:image/jpeg;base64," + data?.image);
         }
       })
@@ -142,9 +141,9 @@ const MyPage = () => {
       Title: <div onClick={() => onClickTab(0)}>프로필</div>,
       Content: (
         <Suspense>
-            <Profile />
+          <Profile />
         </Suspense>
-      )
+      ),
     },
     {
       Title: <div onClick={() => onClickTab(1)}>내 활동</div>,
@@ -152,7 +151,7 @@ const MyPage = () => {
         <Suspense>
           <MyActivity />
         </Suspense>
-      )
+      ),
     },
     {
       Title: <div onClick={() => onClickTab(2)}>작성한 글</div>,
@@ -160,7 +159,7 @@ const MyPage = () => {
         <Suspense>
           <MyPost />
         </Suspense>
-      )
+      ),
     },
     {
       Title: <div onClick={() => onClickTab(3)}>관심글</div>,
@@ -168,7 +167,7 @@ const MyPage = () => {
         <Suspense>
           <Likedlist />
         </Suspense>
-      )
+      ),
     },
     {
       Title: <div onClick={() => onClickTab(4)}>정보설정</div>,
@@ -176,8 +175,8 @@ const MyPage = () => {
         <Suspense>
           <Setting />
         </Suspense>
-      )
-    }
+      ),
+    },
   ];
   const onClickWithdraw = () => {
     const result = window.confirm("정말 탈퇴하시겠습니까?");
@@ -186,14 +185,13 @@ const MyPage = () => {
         method: "DELETE",
         headers: {
           Authorization: localStorage.getItem("Authorization"),
-          AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh")
-        }
+          AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh"),
+        },
       }).then((response) => {
         response.status === 200
           ? alert("회원 탈퇴가 되었습니다!")
-          : alert("회원 탈퇴에 실패하였습니다")
-        }
-      );
+          : alert("회원 탈퇴에 실패하였습니다");
+      });
       window.localStorage.removeItem("Authorization");
       window.localStorage.removeItem("AuthorizationRefresh");
       window.location.href = "/";

@@ -85,29 +85,31 @@ const EmptyProject = styled.div`
   box-shadow: 2px 1px 2px #bdbdbd;
 `;
 
-const ProjectItem = React.memo(({ title, link, color, className, recruitmentId }) => (
-  <Project color={color}>
-    {title}
-    <Button
-      style={{
-        color: className === "past" ? color : "black",
-        borderColor: className === "past" ? color : "black"
-      }}
-      onClick={() => {
-        window.open(`/detail/${recruitmentId}`);
-      }}
-    >
-      상세보기
-    </Button>
-  </Project>
-));
+const ProjectItem = React.memo(
+  ({ title, link, color, className, recruitmentId }) => (
+    <Project color={color}>
+      {title}
+      <Button
+        style={{
+          color: className === "past" ? color : "black",
+          borderColor: className === "past" ? color : "black",
+        }}
+        onClick={() => {
+          window.open(`/detail/${recruitmentId}`);
+        }}
+      >
+        상세보기
+      </Button>
+    </Project>
+  )
+);
 
 const ProjectList = React.memo(({ projects, color, className }) => (
   <ProjectListBlock>
     {projects.map((project, index) => (
       <ProjectItem
         key={index}
-        recruitmentId= {project.recruitmentId}
+        recruitmentId={project.recruitmentId}
         title={project.title}
         color={color}
         className={className}
@@ -117,46 +119,53 @@ const ProjectList = React.memo(({ projects, color, className }) => (
 ));
 
 const CancelApply = (recruitmentId, getActivity) => {
-  const result = window.confirm(
-    "지원을 취소하겠습니까?"
-  );
+  const result = window.confirm("지원을 취소하겠습니까?");
   if (result) {
     fetch(`http://13.125.111.131:8080/recruitment/${recruitmentId}/cancel`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: localStorage.getItem("Authorization"),
-        AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh")
-      }
-    }).then((response) =>
-      {
-        console.log(response);
+        AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh"),
+      },
+    }).then((response) => {
+      console.log(response);
 
-        if (response.status === 200){
-          alert("지원이 취소되었습니다!");
-          getActivity();
-        }
-        else{
-          alert("지원 취소에 실패하였습니다")}
-        }
-    );
+      if (response.status === 200) {
+        alert("지원이 취소되었습니다!");
+        getActivity();
+      } else {
+        alert("지원 취소에 실패하였습니다");
+      }
+    });
   }
 };
 
 const ApplyItem = React.memo(
-  ({ recruitmentId, title, position, status,getActivity }) => (
+  ({ recruitmentId, title, position, status, getActivity }) => (
     <Project className="Apply">
-      <Title><span className="title">{title}</span> </Title>
-      <Position><span className="position">{position}</span></Position>
+      <Title>
+        <span className="title">{title}</span>{" "}
+      </Title>
+      <Position>
+        <span className="position">{position}</span>
+      </Position>
       <Status>
-      <span className="status"
-        style={{
-          color:
-            status === "승인" ? "green" : status === "거절" ? "red" : status === "강퇴" ? "red" : "black"
-        }}
-      >
-        {status}
-      </span>
+        <span
+          className="status"
+          style={{
+            color:
+              status === "승인"
+                ? "green"
+                : status === "거절"
+                ? "red"
+                : status === "강퇴"
+                ? "red"
+                : "black",
+          }}
+        >
+          {status}
+        </span>
       </Status>
       <ButtonContainer>
         <Button
@@ -182,7 +191,7 @@ const ApplyList = React.memo(({ projects, getActivity }) => (
     {projects.map((project) => (
       <ApplyItem
         key={project.title}
-        recruitmentId= {project.recruitmentId}
+        recruitmentId={project.recruitmentId}
         title={project.title}
         position={project.field}
         status={project.status}
@@ -197,27 +206,26 @@ const MyActivity = () => {
   const [userActivity, setUserActivity] = useState({});
 
   const getActivity = () => {
-    fetch("http://localhost:3000/data/userActivity.json", {
-    //fetch("http://13.125.111.131:8080/user/info/activity", {
+    fetch("http://13.125.111.131:8080/user/info/activity", {
       method: "GET",
       headers: {
         Authorization: localStorage.getItem("Authorization"),
         AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh"),
-      }
+      },
     })
-    .then((response) => {
-      if (response.status !== 200) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      setUserActivity(data);
-    })
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setUserActivity(data);
+      })
       .catch((error) => {
         console.error("Error:", error);
       });
-  }
+  };
   useEffect(() => {
     getActivity();
   }, []);
@@ -228,34 +236,30 @@ const MyActivity = () => {
 
   return (
     <Wrapper>
-        <h3>현재 참여중인 프로젝트</h3>
-        {currentProject?.length > 0 ? (
-          <ProjectList
-            color="#5d5fef"
-            projects={currentProject}
-            className="current"
-          />
-        ) : (
-          <EmptyProject> 현재 참여중인 프로젝트가 없습니다 </EmptyProject>
-        )}
+      <h3>현재 참여중인 프로젝트</h3>
+      {currentProject?.length > 0 ? (
+        <ProjectList
+          color="#5d5fef"
+          projects={currentProject}
+          className="current"
+        />
+      ) : (
+        <EmptyProject> 현재 참여중인 프로젝트가 없습니다 </EmptyProject>
+      )}
 
-        <h3>지원한 프로젝트</h3>
-        {applyProject?.length > 0 ? (
-          <ApplyList projects={applyProject} getActivity={getActivity}/>
-        ) : (
-          <EmptyProject> 지원한 프로젝트가 없습니다 </EmptyProject>
-        )}
+      <h3>지원한 프로젝트</h3>
+      {applyProject?.length > 0 ? (
+        <ApplyList projects={applyProject} getActivity={getActivity} />
+      ) : (
+        <EmptyProject> 지원한 프로젝트가 없습니다 </EmptyProject>
+      )}
 
-        <h3>완료한 프로젝트</h3>
-        {pastProject?.length > 0 ? (
-          <ProjectList
-            color="#707070"
-            projects={pastProject}
-            className="past"
-          />
-        ) : (
-          <EmptyProject> 완료한 프로젝트가 없습니다 </EmptyProject>
-        )}
+      <h3>완료한 프로젝트</h3>
+      {pastProject?.length > 0 ? (
+        <ProjectList color="#707070" projects={pastProject} className="past" />
+      ) : (
+        <EmptyProject> 완료한 프로젝트가 없습니다 </EmptyProject>
+      )}
     </Wrapper>
   );
 };

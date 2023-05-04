@@ -68,7 +68,7 @@ const Profile = () => {
     locationLatitude: null,
     locationLongitude: null,
     interests: [],
-    link: []
+    link: [],
   });
   const [introduce, setIntroduce] = useState(data.details);
   const [location, setLocation] = useState(null);
@@ -84,12 +84,11 @@ const Profile = () => {
 
   const fetchInfo = async () => {
     await axios
-      .get(`http://localhost:3000/data/userData.json`, {
-      //.get(`http://13.125.111.131:8080/user/info/profile`, {
+      .get(`http://13.125.111.131:8080/user/info/profile`, {
         headers: {
           Authorization: localStorage.getItem("Authorization"),
-          AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh")
-        }
+          AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh"),
+        },
       })
       .then((response) => {
         setData(response.data);
@@ -98,8 +97,8 @@ const Profile = () => {
         setIntroduce(response.data.details);
         setLocation({
           lat: data.locationLatitude || null,
-          lng: data.locationLongitude || null
-        })
+          lng: data.locationLongitude || null,
+        });
       });
   };
 
@@ -129,72 +128,68 @@ const Profile = () => {
           locationLongitude: location.lng,
           links: UpdateLinkss,
           tags: UpdateTags,
-          details: introduce
+          details: introduce,
         }),
         headers: {
           "Content-Type": "application/json",
           Authorization: localStorage.getItem("Authorization"),
-          AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh")
-        }
+          AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh"),
+        },
       })
-      .then((response) => {
-        if (response.status === 200) {
-          alert("프로필을 성공적으로 변경하였습니다");
-          setUserProfileData({ ...userProfileData });
-        } else {
-          alert("프로필 변경에 실패하였습니다");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then((response) => {
+          if (response.status === 200) {
+            alert("프로필을 성공적으로 변경하였습니다");
+            setUserProfileData({ ...userProfileData });
+          } else {
+            alert("프로필 변경에 실패하였습니다");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     [location, UpdateLinkss, UpdateTags, introduce, userProfileData]
   );
 
   const modules = {
-    toolbar: false
+    toolbar: false,
   };
   return (
     <Wrapper>
-        <h3>선호 지역</h3>
-        <MapWrapper>
-          {location && (
-            <KakaoMap
-              handleUserLocation={handleUserLocation}
-              data={{
-                lat: data.locationLatitude,
-                lng: data.locationLongitude
-              }}
-            />
-          )}
+      <h3>선호 지역</h3>
+      <MapWrapper>
+        {location && (
+          <KakaoMap
+            handleUserLocation={handleUserLocation}
+            data={{
+              lat: data.locationLatitude,
+              lng: data.locationLongitude,
+            }}
+          />
+        )}
       </MapWrapper>
 
-        <h3>링크</h3>
-        <ProfileLink data={links} handleUserLinks={handleUserLinks} />
+      <h3>링크</h3>
+      <ProfileLink data={links} handleUserLinks={handleUserLinks} />
 
-        <h3>관심 태그</h3>
-        <ProfileTag data={tags} handleUserTags={handleUserTags} />
+      <h3>관심 태그</h3>
+      <ProfileTag data={tags} handleUserTags={handleUserTags} />
 
-        <h3>상세 소개</h3>
-        <EditorWrapper>
-          <ReactQuill
-            value={introduce}
-            onChange={handleContentChange}
-            modules={modules}
-            theme="snow"
-          />
-        </EditorWrapper>
+      <h3>상세 소개</h3>
+      <EditorWrapper>
+        <ReactQuill
+          value={introduce}
+          onChange={handleContentChange}
+          modules={modules}
+          theme="snow"
+        />
+      </EditorWrapper>
 
-        <SaveButtonContainer>
-          <SaveButton
-            type="submit"
-            backgroundColor={"black"}
-            onClick={onSubmit}
-          >
-            저장하기
-          </SaveButton>
-        </SaveButtonContainer>
+      <SaveButtonContainer>
+        <SaveButton type="submit" backgroundColor={"black"} onClick={onSubmit}>
+          저장하기
+        </SaveButton>
+      </SaveButtonContainer>
     </Wrapper>
   );
 };

@@ -43,8 +43,8 @@ const NavList = styled.ul`
   font-size: 17px;
   height: 50px;
   align-items: center;
- 
-  .name{
+
+  .name {
     color: #5d5fef;
   }
 `;
@@ -57,14 +57,14 @@ const NavItem = styled.li`
     color: inherit;
     text-decoration: none;
   }
-  &:hover{
+  &:hover {
     border-bottom: 2px solid #5d5fef;
   }
 `;
 
 const Header = () => {
   const [signInModal, setSignInModal] = useState(false);
-  const [userLogIn, setUserLogIn] = useState(true);//mock data사용으로 기본 값 true (로그인상태)로 변경
+  const [userLogIn, setUserLogIn] = useState(true); //mock data사용으로 기본 값 true (로그인상태)로 변경
   const [username, setUsername] = useState("");
   useEffect(() => {
     const authorization = window.localStorage.getItem("Authorization");
@@ -77,12 +77,11 @@ const Header = () => {
     }
 
     axios
-    .get(`http://localhost:3000/data/userData.json`, {
-     // .get(`http://13.125.111.131:8080/user/info/profile`, {
+      .get(`http://13.125.111.131:8080/user/info/profile`, {
         headers: {
           Authorization: localStorage.getItem("Authorization"),
-          AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh")
-        }
+          AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh"),
+        },
       })
       .then((response) => {
         setUsername(response.data.name);
@@ -104,7 +103,8 @@ const Header = () => {
         </Logo>
         {userLogIn ? (
           <NavList>
-            <span className="name">{username}</span><span>님</span>
+            <span className="name">{username}</span>
+            <span>님</span>
             <NavItem>
               <Link to="/post">새 글쓰기</Link>
             </NavItem>
