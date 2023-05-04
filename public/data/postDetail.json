@@ -1,0 +1,182 @@
+{
+  "detail": [
+    {
+      "postId": 1,
+      "recruitInfo": {
+        "title": "점심 식사 추천 서비스 프로젝트 팀원 모집합니다",
+        "content": "연락주세용",
+        "state": 1,
+        "category": "프로그래밍",
+        "postUser": {
+          "userId": 2,
+          "nickname": "펭귄"
+        },
+        "tags": ["사이드프로젝트", "백엔드", "리액트", "디자이너"],
+        "members": [
+          {
+            "recruitMemberId": 1,
+            "recruitField": "backend",
+            "currentCount": 0,
+            "totalCount": 2
+          },
+          {
+            "recruitMemberId": 2,
+            "recruitField": "frontend",
+            "currentCount": 0,
+            "totalCount": 2
+          },
+          {
+            "recruitMemberId": 3,
+            "recruitField": "LEADER",
+            "currentCount": 1,
+            "totalCount": 1
+          }
+        ]
+      },
+      "repliesInfo": {}
+    },
+    {
+      "postId": 2,
+      "recruitInfo": {
+        "title": "면접 스터디 진행합니다",
+        "content": "취업 면접스터디입니다 관심있으시면 연락주세요",
+        "state": 1,
+        "category": "면접",
+        "postUser": {
+          "userId": 3,
+          "nickname": "JSH"
+        },
+        "tags": ["면접", "인성면접", "최종면접"],
+        "members": [
+          {
+            "recruitMemberId": 1,
+            "recruitField": "취준생",
+            "currentCount": 0,
+            "totalCount": 3
+          },
+          {
+            "recruitMemberId": 3,
+            "recruitField": "LEADER",
+            "currentCount": 1,
+            "totalCount": 1
+          }
+        ]
+      },
+      "repliesInfo": {}
+    },
+    {
+      "postId": 3,
+      "recruitInfo": {
+        "title": "복슬복슬 프로젝트 같이 하실 분 모집합니다",
+        "content": "연락주세용",
+        "state": 1,
+        "category": "프로그래밍",
+        "postUser": {
+          "userId": 3,
+          "nickname": "JSH"
+        },
+        "tags": ["프로그래밍", "프로젝트", "자바"],
+        "members": [
+          {
+            "recruitMemberId": 1,
+            "recruitField": "backend",
+            "currentCount": 1,
+            "totalCount": 3
+          },
+          {
+            "recruitMemberId": 2,
+            "recruitField": "frontend",
+            "currentCount": 0,
+            "totalCount": 3
+          },
+          {
+            "recruitMemberId": 3,
+            "recruitField": "LEADER",
+            "currentCount": 1,
+            "totalCount": 1
+          }
+        ]
+      },
+      "repliesInfo": {}
+    },
+    {
+      "postId": 4,
+      "recruitInfo": {
+        "title": "아랍어 배워보실 분?",
+        "content": "아랍어 관심있으신분 연락주세요",
+        "state": 3,
+        "category": "어학",
+        "postUser": {
+          "userId": 2,
+          "nickname": "펭귄"
+        },
+        "tags": ["아랍어", "외국어", "언어"],
+        "members": [
+          {
+            "recruitMemberId": 1,
+            "recruitField": "배우실분",
+            "currentCount": 0,
+            "totalCount": 2
+          },
+          {
+            "recruitMemberId": 3,
+            "recruitField": "LEADER",
+            "currentCount": 1,
+            "totalCount": 1
+          }
+        ]
+      },
+      "repliesInfo": {}
+    },
+    {
+      "postId": 5,
+      "recruitInfo": {
+        "title": "피로에 지친 취준생분들 쉬러가요",
+        "content": "술이나 드실분",
+        "state": 1,
+        "category": "기타",
+        "postUser": {
+          "userId": 4,
+          "nickname": "규규"
+        },
+        "tags": ["술", "같이놀아요"],
+        "members": [
+          {
+            "recruitMemberId": 1,
+            "recruitField": "취준생",
+            "currentCount": 0,
+            "totalCount": 3
+          },
+          {
+            "recruitMemberId": 3,
+            "recruitField": "LEADER",
+            "currentCount": 1,
+            "totalCount": 1
+          }
+        ]
+      },
+      "repliesInfo": {
+        "count": 5,
+        "info": [
+          {
+            "replyId": 1,
+            "userId": 2,
+            "author": "펭귄",
+            "content": "주량 상관없을까요?",
+            "createDate": "2023-04-18 20:37:54 PM",
+            "subReplies": [
+              {
+                "replyId": 2,
+                "userId": 4,
+                "author": "규규",
+                "content": "안녕하세요! 상관없습니다",
+                "createDate": "2023-04-18 20:37:58 PM",
+                "subReplies": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
