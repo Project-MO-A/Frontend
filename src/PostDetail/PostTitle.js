@@ -82,6 +82,8 @@ const PostTitle = () => {
   const [user, setUser] = useState(data.postUser);
   const [Author, setAuthor] = useState(0);
 
+  const URL = process.env.REACT_APP_URL;
+
   useEffect(() => {
     fetchPostUserInfo();
   }, []);
