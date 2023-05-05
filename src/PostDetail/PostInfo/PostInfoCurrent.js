@@ -57,18 +57,19 @@ const PostInfoCurrent = () => {
   const fetchList = async () => {
     await axios
       .get(
-        `http://13.125.111.131:8080/user/info/activity`,
+        `http://localhost:3000/data/userActivity.json`
+        // .get(`http://13.125.111.131:8080/user/info/activity`,
 
-        {
-          headers: {
-            // 로그인 후 받아오는 인증토큰값
-            Authorization: window.localStorage.getItem("Authorization"),
+        //   {
+        //     headers: {
+        //       // 로그인 후 받아오는 인증토큰값
+        //       Authorization: window.localStorage.getItem("Authorization"),
 
-            AuthorizationRefresh: window.localStorage.getItem(
-              "AuthorizationRefresh"
-            ),
-          },
-        }
+        //       AuthorizationRefresh: window.localStorage.getItem(
+        //         "AuthorizationRefresh"
+        //       ),
+        //     },
+        //   }
       )
       .then((response) => {
         setActivity(response.data.approvedProjects.CONCURRENT);

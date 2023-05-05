@@ -19,21 +19,25 @@ const PostDetail = () => {
   const [Info, setInfo] = useRecoilState(userInfo);
   const { postId } = useParams();
 
-  // const fetchInfo = async () => {
-  //   await axios
-  //     .get("http://13.125.111.131:8080/user/info/profile", {
-  //       headers: {
-  //         Authorization: window.localStorage.getItem("Authorization"),
+  const fetchInfo = async () => {
+    await axios
+      .get(
+        "http://localhost:3000/data/userData.json"
+        // .get("http://13.125.111.131:8080/user/info/profile",
+        // {
+        //   headers: {
+        //     Authorization: window.localStorage.getItem("Authorization"),
 
-  //         AuthorizationRefresh: window.localStorage.getItem(
-  //           "AuthorizationRefresh"
-  //         ),
-  //       },
-  //     })
-  //     .then((response) => {
-  //       setInfo(response.data);
-  //     });
-  // };
+        //     AuthorizationRefresh: window.localStorage.getItem(
+        //       "AuthorizationRefresh"
+        //     ),
+        //   },
+        // })
+      )
+      .then((response) => {
+        setInfo(response.data);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -59,6 +63,7 @@ const PostDetail = () => {
           setPost(currentData.recruitInfo);
           setIsLoading(false);
           setTitles(currentData.recruitInfo.state);
+          console.log(currentData.recruitInfo);
         }
 
         // setPost(response.data.recruitInfo);
@@ -66,7 +71,7 @@ const PostDetail = () => {
         // setTitles(response.data.recruitInfo.state);
       });
 
-    // fetchInfo();
+    fetchInfo();
   }, [setPost, setTitles, postId]);
 
   return (

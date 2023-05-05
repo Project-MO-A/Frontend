@@ -112,7 +112,7 @@ const NoticeItem = ({
   fetchUpdateAttend,
   fetchFinishVote,
 }) => {
-  const [date, setDate] = useState(newnotice.createdDate);
+  const [date, setDate] = useState(newnotice.createdAt);
   const [isEdit, setIsEdit] = useState(false);
   const [isVote, setIsVote] = useState(true);
   const [curContent, setCurContent] = useState(newnotice.content);

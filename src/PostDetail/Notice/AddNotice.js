@@ -61,17 +61,22 @@ const AddNotice = () => {
 
   const fetchNotice = async () => {
     await axios
-      .get(`http://13.125.111.131:8080/recruitment/${postId}/notice`, {
-        headers: {
-          Authorization: window.localStorage.getItem("Authorization"),
+      .get(
+        `http://localhost:3000/data/postNotice.json`
+        // .get(`http://13.125.111.131:8080/recruitment/${postId}/notice`,
+        //  {
+        //   headers: {
+        //     Authorization: window.localStorage.getItem("Authorization"),
 
-          AuthorizationRefresh: window.localStorage.getItem(
-            "AuthorizationRefresh"
-          ),
-        },
-      })
+        //     AuthorizationRefresh: window.localStorage.getItem(
+        //       "AuthorizationRefresh"
+        //     ),
+        //   },
+        // })
+      )
       .then((response) => {
         setNewNotice(response.data.notices);
+        console.log(response.data.notices);
       });
   };
 

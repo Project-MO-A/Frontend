@@ -1,0 +1,27 @@
+{
+  "list": [
+    {
+      "postId": 7,
+      "memberInfo": [
+        {
+          "userId": 1,
+          "applyId": 1,
+          "nickname": "모아",
+          "recruitField": "LEADER",
+          "popularity": 0.0,
+          "totalAttend": 0,
+          "attend": 0
+        },
+        {
+          "userId": 4,
+          "applyId": 2,
+          "nickname": "규규",
+          "recruitField": "배우실분",
+          "popularity": 0.0,
+          "totalAttend": 10,
+          "attend": 4
+        }
+      ]
+    }
+  ]
+}
