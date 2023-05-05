@@ -202,12 +202,12 @@ const PostComponent = ({
   const [showMenu, setShowMenu] = useState(false);
   const [isMain, setIsMain] = useState(false);
 
-  if (tags.length > 5) {
+  if (tags?.length > 5) {
     tags = tags.slice(0, 5);
   }
   if (title.length > 50) {
     title = title.slice(0, 47) + "...";
-  }
+  } 
 
   useEffect(() => {
     if (type === "MyPost") setIsMypost(true);
@@ -328,7 +328,8 @@ const PostComponent = ({
           >
             {category}
           </Tag>
-          <Tag color="black">{recruitStatus}</Tag>
+          <Tag color="black">{parseInt(recruitStatus) === 1 ? "모집중" : (parseInt(recruitStatus) === 2 ? "모집 완료" : "프로젝트 완료")}
+          </Tag>
         </CatergoryBlock>
         {isMypost ? (
           <>

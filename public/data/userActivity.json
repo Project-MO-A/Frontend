@@ -13,9 +13,9 @@
     },
     "etcProjects" : [
         {
-            "recruitmentId" : "2",
-            "title" : "title2",
-            "field" : "프론트엔드",
+            "recruitmentId" : "5",
+            "title" : "피로에 지친 취준생분들 쉬러가요",
+            "field" : "취준생",
             "status" : "대기중"
         }
     ]

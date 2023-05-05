@@ -7,6 +7,7 @@
         "content": "연락주세용",
         "state": 1,
         "category": "프로그래밍",
+        "createdDate": "2023-04-27",
         "postUser": {
           "userId": 2,
           "nickname": "펭귄"
@@ -42,6 +43,7 @@
         "content": "취업 면접스터디입니다 관심있으시면 연락주세요",
         "state": 1,
         "category": "면접",
+        "createdDate": "2023-04-20",
         "postUser": {
           "userId": 3,
           "nickname": "JSH"
@@ -71,9 +73,10 @@
         "content": "연락주세용",
         "state": 1,
         "category": "프로그래밍",
+        "createdDate": "2023-04-16",
         "postUser": {
-          "userId": 3,
-          "nickname": "JSH"
+          "userId": 5,
+          "nickname": "모아"
         },
         "tags": ["프로그래밍", "프로젝트", "자바"],
         "members": [
@@ -106,6 +109,7 @@
         "content": "아랍어 관심있으신분 연락주세요",
         "state": 3,
         "category": "어학",
+        "createdDate": "2023-04-13",
         "postUser": {
           "userId": 2,
           "nickname": "펭귄"
@@ -135,6 +139,7 @@
         "content": "술이나 드실분",
         "state": 1,
         "category": "기타",
+        "createdDate": "2023-04-08",
         "postUser": {
           "userId": 4,
           "nickname": "규규"
@@ -156,7 +161,7 @@
         ]
       },
       "repliesInfo": {
-        "count": 5,
+        "count": 2,
         "info": [
           {
             "replyId": 1,
@@ -176,6 +181,252 @@
             ]
           }
         ]
+      }
+    },
+    {
+      "postId": 6,
+      "recruitInfo": {
+        "title": "여행 중 동행 모집 플랫폼 개발",
+        "content": "개발하실 분 연락주세요",
+        "state": 3,
+        "category": "프로그래밍",
+        "createdDate": "2023-03-01",
+        "postUser": {
+          "userId": 5,
+          "nickname": "모아"
+        },
+        "tags": ["프론트엔드", "백엔드", "리액트", "자바"],
+        "members": [
+          {
+            "recruitMemberId": 1,
+            "recruitField": "프론트엔드",
+            "currentCount": 1,
+            "totalCount": 2
+          },
+          {
+            "recruitMemberId": 2,
+            "recruitField": "백엔드",
+            "currentCount": 0,
+            "totalCount": 2
+          },
+          {
+            "recruitMemberId": 3,
+            "recruitField": "LEADER",
+            "currentCount": 1,
+            "totalCount": 1
+          }
+        ]
+      },
+      "repliesInfo": {
+        "count" : 5,
+        "info": [
+          {
+            "replyId": 1,
+            "userId": 4,
+            "author": "규규",
+            "content": "예상 기간이 어느정도인가요요?",
+            "createDate": "2023-04-18 20:37:54 PM",
+            "subReplies": [
+              {
+                "replyId": 2,
+                "userId": 5,
+                "author": "모아",
+                "content": "약 3개월으로 잡고 있습니다.",
+                "createDate": "2023-04-18 20:37:58 PM",
+                "subReplies": []
+              }
+            ]
+          },
+          {
+            "replyId": 3,
+            "userId": 3,
+            "author": "JSH",
+            "content": "운영 및 유지보수까지 하나요?",
+            "createDate": "2023-04-18 20:37:54 PM",
+            "subReplies": [
+              {
+                "replyId": 4,
+                "userId": 5,
+                "author": "모아",
+                "content": "현재는 배포까지 생각중 입니다.",
+                "createDate": "2023-04-18 20:37:58 PM",
+                "subReplies": []
+              }
+            ]
+          },
+          {
+            "replyId": 5,
+            "userId": 2,
+            "author": "펭귄",
+            "content": "진행 방식이 온라인인가요?",
+            "createDate": "2023-04-18 20:37:54 PM",
+            "subReplies": []
+          }
+        ]
+      }
+    },
+    {
+      "postId": 7,
+      "recruitInfo": {
+        "title": "토플 90+ 스터디 모집",
+        "content": "토플 고득점 스터디 연락주세요",
+        "state": 3,
+        "category": "어학",
+        "createdDate": "2023-04-02",
+        "postUser": {
+          "userId": 5,
+          "nickname": "모아"
+        },
+        "tags": ["토플", "영어", "스터디"],
+        "members": [
+          {
+            "recruitMemberId": 1,
+            "recruitField": "배우실분",
+            "currentCount": 2,
+            "totalCount": 3
+          },
+          {
+            "recruitMemberId": 3,
+            "recruitField": "LEADER",
+            "currentCount": 1,
+            "totalCount": 1
+          }
+        ]
+      },
+      "repliesInfo": {
+        "count": 3,
+        "info": [
+          {
+            "replyId": 1,
+            "userId": 2,
+            "author": "펭귄",
+            "content": "대면으로 하나요?",
+            "createDate": "2023-04-02 20:37:54 PM",
+            "subReplies": [
+              {
+                "replyId": 2,
+                "userId": 5,
+                "author": "모아",
+                "content": "안녕하세요! 주 1회정도는 대면으로 진행할 예정입니다.",
+                "createDate": "2023-04-03 10:37:58 AM",
+                "subReplies": []
+              }
+            ]
+          },
+          {
+            "replyId": 3,
+            "userId": 4,
+            "author": "규규",
+            "content": "주량 상관없을까요?",
+            "createDate": "2023-04-03 10:37:54 PM",
+            "subReplies": []
+          }
+        ]
+      }
+    },
+    {
+      "postId": 8,
+      "recruitInfo": {
+        "title": "수도권 같이 클라이밍해요",
+        "content": "수도권 암장 같이 다녀용",
+        "state": 1,
+        "category": "취미",
+        "createDate" : "2023-04-04",
+        "postUser": {
+          "userId": 2,
+          "nickname": "펭귄"
+        },
+        "tags": ["클라이밍", "취미", "수도권"],
+        "members": [
+          {
+            "recruitMemberId": 1,
+            "recruitField": "클라이밍",
+            "currentCount": 4,
+            "totalCount": 5
+          },
+          {
+            "recruitMemberId": 3,
+            "recruitField": "LEADER",
+            "currentCount": 1,
+            "totalCount": 1
+          }
+        ]
+      },
+      "repliesInfo": {
+        "count": 0
+      }
+    },
+    {
+      "postId": 9,
+      "recruitInfo": {
+        "title": "예약 결제 플랫폼 개발",
+        "content": "아랍어 관심있으신분 연락주세요",
+        "state": 3,
+        "category": "프로그래밍",
+        "createdDate": "2023-04-06",
+        "postUser": {
+          "userId": 5,
+          "nickname": "모아"
+        },
+        "tags": ["디자이너", "프론트엔드", "백엔드", "웹개발"],
+        "members": [
+          {
+            "recruitMemberId": 1,
+            "recruitField": "배우실분",
+            "currentCount": 0,
+            "totalCount": 2
+          },
+          {
+            "recruitMemberId": 3,
+            "recruitField": "LEADER",
+            "currentCount": 1,
+            "totalCount": 1
+          }
+        ]
+      },
+      "repliesInfo": {
+        "count": 1,
+        "info": [
+          {
+            "replyId": 1,
+            "userId": 2,
+            "author": "펭귄",
+            "content": "프론트엔드 어떤 스택으로 개발하나요?",
+            "createDate": "2023-04-07 12:37:54 PM",
+            "subReplies": []
+          }
+        ]
+      }
+    },
+    {
+      "postId": 10,
+      "recruitInfo": {
+        "title": "취업 자소서/면접 스터디",
+        "content": "같이 하반기 취뽀합시당!",
+        "state": 2,
+        "category": "취업",
+        "postUser": {
+          "userId": 3,
+          "nickname": "JSH"
+        },
+        "tags": ["취업", "자소서", "면접", "취뽀"],
+        "members": [
+          {
+            "recruitMemberId": 1,
+            "recruitField": "취업 스터디",
+            "currentCount": 3,
+            "totalCount": 3
+          },
+          {
+            "recruitMemberId": 3,
+            "recruitField": "LEADER",
+            "currentCount": 1,
+            "totalCount": 1
+          }
+        ]
+      },
+      "repliesInfo": {
+        "count": 0
       }
     }
   ]

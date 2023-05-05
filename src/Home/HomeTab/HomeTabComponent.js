@@ -119,9 +119,10 @@ const HomeTabComponent = ({
       }
 
       axios
-        .get("http://13.125.111.131:8080" + url, { headers })
+        .get('http://localhost:3000/data/postDetail.json', { headers })
+        //.get("http://13.125.111.131:8080" + url, { headers })
         .then((response) => {
-          setPostData(response.data.value);
+          setPostData(response.data.detail);
         })
         .catch((error) => {
           setPostData([]);
@@ -138,14 +139,14 @@ const HomeTabComponent = ({
             <PostComponent
               key={index}
               type="main"
-              id={post.id}
-              title={post.title}
-              author={post.author}
-              category={post.category}
-              tags={post.tags}
-              recruitStatus={post.recruitStatus}
-              date={post.createdDate}
-              replyCount={post.replyCount}
+              id={post.postId}
+              title={post.recruitInfo.title}
+              author={post.recruitInfo.postUser.nickname}
+              category={post.recruitInfo.category}
+              tags={post.recruitInfo.tags}
+              recruitStatus={post.recruitInfo.state}
+              date={post.recruitInfo.createdDate}
+              replyCount={post.repliesInfo.count || 0}
               onClickCategory={onClickCategory}
               onClickTag={onClickTag}
             />
