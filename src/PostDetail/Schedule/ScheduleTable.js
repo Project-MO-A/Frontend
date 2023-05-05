@@ -87,7 +87,6 @@ const ScheduleTable = ({ isEdit }) => {
       )
       .then((response) => {
         setMemberCnt(response.data);
-        console.log(response.data);
       });
   };
 
@@ -101,34 +100,40 @@ const ScheduleTable = ({ isEdit }) => {
 
   const fetchMySchedule = async () => {
     await axios
-      .get(`http://13.125.111.131:8080/recruitment/${postId}/time`, {
-        headers: {
-          Authorization: window.localStorage.getItem("Authorization"),
+      .get(
+        `http://localhost:3000/data/postMySchedule.json`
+        // .get(`http://13.125.111.131:8080/recruitment/${postId}/time`,
+        //  {
+        //   headers: {
+        //     Authorization: window.localStorage.getItem("Authorization"),
 
-          AuthorizationRefresh: window.localStorage.getItem(
-            "AuthorizationRefresh"
-          ),
-        },
-      })
+        //     AuthorizationRefresh: window.localStorage.getItem(
+        //       "AuthorizationRefresh"
+        //     ),
+        //   },
+        // })
+      )
       .then((response) => {
         setMySchedule(response.data);
-        console.log(response);
       });
   };
   const fetchSchedule = async () => {
     await axios
-      .get(`http://13.125.111.131:8080/recruitment/${postId}/time/all`, {
-        headers: {
-          Authorization: window.localStorage.getItem("Authorization"),
+      .get(
+        `http://localhost:3000/data/postAllSchedule.json`
+        // .get(`http://13.125.111.131:8080/recruitment/${postId}/time/all`,
+        // {
+        //   headers: {
+        //     Authorization: window.localStorage.getItem("Authorization"),
 
-          AuthorizationRefresh: window.localStorage.getItem(
-            "AuthorizationRefresh"
-          ),
-        },
-      })
+        //     AuthorizationRefresh: window.localStorage.getItem(
+        //       "AuthorizationRefresh"
+        //     ),
+        //   },
+        // })
+      )
       .then((response) => {
         setScheduleData(response.data);
-        console.log(response.data);
       });
   };
   useEffect(() => {
