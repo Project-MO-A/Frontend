@@ -2,6 +2,8 @@ import React, { useState, useEffect, lazy, Suspense } from "react";
 import styled from "styled-components";
 import profileImg from "../Common/profileImg.png";
 import UserPopularity from "../Common/UserPopularity";
+import { useRecoilValue } from "recoil";
+import { userInfo } from "../Recoil/atoms";
 
 const Profile = lazy(() => import("./Profile"));
 const Likedlist = lazy(() => import("./Likedlist"));
@@ -105,6 +107,9 @@ const PopularityContainer = styled.div`
 const MyPage = () => {
   const [popularity, setPopularity] = useState(0);
   const [getProfileImg, setProfileImg] = useState(profileImg);
+
+  const info = useRecoilValue(userInfo);
+  console.log(info);
 
   useEffect(() => {
     fetch(`http://localhost:3000/data/userData.json`, {

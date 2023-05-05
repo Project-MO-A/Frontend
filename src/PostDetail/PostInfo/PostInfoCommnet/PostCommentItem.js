@@ -55,6 +55,7 @@ const PostCommentItem = ({ item, onDeleteComment, onEditComment }) => {
   const [curContent, setCurContent] = useState(item.content);
   const { postId } = useParams();
   const info = useRecoilValue(userInfo);
+  console.log(info);
 
   const editCommentHandelr = (id, curContent) => {
     if (curContent.length === 0) {
