@@ -52,7 +52,6 @@ const Likedlist = () => {
     })
     .then((data) => {
       setLikedPost(data.writing);
-      console.log(data.writing);
     })
       .catch((error) => {
         console.error("Error:", error);
@@ -71,6 +70,7 @@ const Likedlist = () => {
               title={post.title}
               author={post.author} category={post.category} tags={post.tags} recruitStatus={post.recruitStatus} date={post.createdDate}replyCount={post.replyCount}
               />
+              
             ))}
             </ComponentWrapper>
         }

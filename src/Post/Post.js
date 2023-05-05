@@ -19,7 +19,7 @@ const Post = ({ isEdit }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [state, setState] = useState(null);
-  const [editData, setEdit] = useState(null);
+  const [editData, setEditData] = useState(null);
   const { postId } = useParams();
   const navigate = useNavigate();
   console.log(memberFields);
@@ -27,7 +27,8 @@ const Post = ({ isEdit }) => {
     if(isEdit){
       axios
       .get(
-        `http://13.125.111.131:8080/recruitment/${postId}`,
+        `http://localhost:3000/data/postDetail.json`,
+        //`http://13.125.111.131:8080/recruitment/${postId}`,
         {
           headers: {
             Authorization: localStorage.getItem("Authorization"),
@@ -36,6 +37,15 @@ const Post = ({ isEdit }) => {
         }
       )
       .then((response) => {
+        const currData = response.data.detail[postId-1];
+        setEditData(currData.recruitInfo);
+        setCategoryName(currData.recruitInfo?.category);
+        setMemberFields(currData.recruitInfo.members);
+        setTags(currData.recruitInfo.tags)
+        setTitle(currData.recruitInfo.title)
+        setContent(currData.recruitInfo.content);
+        setState(currData.recruitInfo.state);
+        /*
         setEdit(response.data.recruitInfo);
         setCategoryName(response.data.recruitInfo?.category);
         setMemberFields(response.data.recruitInfo.members);
@@ -43,10 +53,11 @@ const Post = ({ isEdit }) => {
         setTitle(response.data.recruitInfo.title)
         setContent(response.data.recruitInfo.content);
         setState(response.data.recruitInfo.state);
+        */
       });
     }
     else{
-      setEdit("not Edit Mode");
+      setEditData("not Edit Mode");
     }
   },[postId, isEdit]);
 
