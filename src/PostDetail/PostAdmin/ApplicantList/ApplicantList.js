@@ -45,7 +45,7 @@ const AppliCantWrap = styled.div`
 `;
 const ApplycantPosition = styled.h4`
   padding-left: 40px;
-  p{
+  p {
     font-size: 20px;
     font-weight: 650;
   }
@@ -73,19 +73,30 @@ const ApplicantList = () => {
     };
 
     await axios
-      .get(`http://13.125.111.131:8080/recruitment/${postId}/apply/members`, {
-        headers: {
-          // 로그인 후 받아오는 인증토큰값
-          Authorization: window.localStorage.getItem("Authorization"),
+      .get(
+        `http://localhost:3000/data/postApplicant.json`
+        // .get(`http://13.125.111.131:8080/recruitment/${postId}/apply/members`,
+        //  {
+        //   headers: {
+        //     // 로그인 후 받아오는 인증토큰값
+        //     Authorization: window.localStorage.getItem("Authorization"),
 
-          AuthorizationRefresh: window.localStorage.getItem(
-            "AuthorizationRefresh"
-          ),
-        },
-        params,
-      })
+        //     AuthorizationRefresh: window.localStorage.getItem(
+        //       "AuthorizationRefresh"
+        //     ),
+        //   },
+        //   params,
+        // })
+      )
       .then((response) => {
-        setApplyMember(response.data.value);
+        if (response.data.list) {
+          const currentData = response.data.list.find(
+            (item) => parseInt(item.postId) === parseInt(postId)
+          );
+
+          setApplyMember(currentData.applyInfo);
+        }
+        // setApplyMember(response.data.value);
       });
   };
 

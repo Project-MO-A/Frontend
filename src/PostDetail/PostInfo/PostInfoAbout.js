@@ -17,7 +17,7 @@ const HrLine = styled.hr`
   margin-top: 25px;
 `;
 
-const PostInfoAbout = ({ curPost }) => {
+const PostInfoAbout = () => {
   const data = useRecoilValue(myPostData);
 
   return (

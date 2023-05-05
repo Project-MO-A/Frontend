@@ -56,20 +56,29 @@ const MemberList = () => {
   const fetchMember = async () => {
     await axios
       .get(
-        `http://13.125.111.131:8080/recruitment/${postId}/approved/members`,
-        {
-          headers: {
-            // 로그인 후 받아오는 인증토큰값
-            Authorization: window.localStorage.getItem("Authorization"),
+        `http://localhost:3000/data/postMember.json`
+        // .get(`http://13.125.111.131:8080/recruitment/${postId}/approved/members`,
+        //   {
+        //     headers: {
+        //       // 로그인 후 받아오는 인증토큰값
+        //       Authorization: window.localStorage.getItem("Authorization"),
 
-            AuthorizationRefresh: window.localStorage.getItem(
-              "AuthorizationRefresh"
-            ),
-          },
-        }
+        //       AuthorizationRefresh: window.localStorage.getItem(
+        //         "AuthorizationRefresh"
+        //       ),
+        //     },
+        //   }
+        // )
       )
       .then((response) => {
-        setMembers(response.data);
+        if (response.data.list) {
+          const currentData = response.data.list.find(
+            (item) => parseInt(item.postId) === parseInt(postId)
+          );
+
+          setMembers(currentData.memberInfo);
+        }
+        // setMembers(response.data);
       });
   };
   const fetchPost = async () => {
