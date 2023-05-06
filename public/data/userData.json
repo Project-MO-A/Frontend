@@ -1,20 +1,15 @@
 {
-    "userId" : 1,
-    "email" : "moa@email.com",
-    "name" : "김모아",
-    "nickname" : "모아",
-    "locationLatitude" : 37.456004,
-    "locationLongitude" : 126.705176,
-    "popularity" : {
-        "rate" : 3.7,
-        "count" : 3
-    },
-    "details" : "안녕하세요 리액트를 공부하고 있는 프론트엔드 개발자입니다. JS와 TS를 이용한 사이드 프로젝트 경험이 있습니다.",
-    "interests" : [
-        "프론트엔드",
-        "리액트"
-    ],
-    "link" : [
-         "https://github.com"
-    ]
+  "userId": 1,
+  "email": "moa@email.com",
+  "name": "김모아",
+  "nickname": "모아",
+  "locationLatitude": 37.456004,
+  "locationLongitude": 126.705176,
+  "popularity": {
+    "rate": 3.7,
+    "count": 3
+  },
+  "details": "안녕하세요 리액트를 공부하고 있는 프론트엔드 개발자입니다. JS와 TS를 이용한 사이드 프로젝트 경험이 있습니다.",
+  "interests": ["프론트엔드", "리액트"],
+  "link": ["https://github.com"]
 }

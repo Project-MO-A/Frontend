@@ -75,8 +75,12 @@ const AddNotice = () => {
         // })
       )
       .then((response) => {
-        setNewNotice(response.data.notices);
-        console.log(response.data.notices);
+        if (response.data) {
+          const currentNotice = response.data.find(
+            (item) => parseInt(postId) === parseInt(item.postId)
+          );
+          setNewNotice(currentNotice.notices);
+        }
       });
   };
 
@@ -277,7 +281,7 @@ const AddNotice = () => {
             </form>
           </div>
           {/* 글쓴이인 경우로 author값에 true를 전달 */}
-          {newNotice.map((newnotice) => (
+          {newNotice?.map((newnotice) => (
             <div key={newnotice.noticeId}>
               <NoticeItem
                 author={true}
@@ -299,7 +303,7 @@ const AddNotice = () => {
             author값에 false를 전달 */}
           <h1>공지사항</h1>
 
-          {newNotice.map((newnotice) => (
+          {newNotice?.map((newnotice) => (
             <div key={newnotice.noticeId}>
               <NoticeItem
                 author={false}
