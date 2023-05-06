@@ -92,10 +92,10 @@ const Profile = () => {
         }
       })
       .then((response) => {
-        setData(response.data);
-        setTags(response.data.interests);
-        setLinks(response.data.link);
-        setIntroduce(response.data.details);
+        setData(response.data[0]);
+        setTags(response.data[0].interests);
+        setLinks(response.data[0].link);
+        setIntroduce(response.data[0].details);
         setLocation({
           lat: data.locationLatitude || null,
           lng: data.locationLongitude || null

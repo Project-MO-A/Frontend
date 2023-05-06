@@ -123,7 +123,7 @@ const MyPage = () => {
         return response.json();
       })
       .then((data) => {
-        setPopularity(data.popularity.rate);
+        setPopularity(data[0].popularity.rate);
         if(data.image !== null) {
           //setProfileImg("data:image/jpeg;base64," + data?.image);
         }

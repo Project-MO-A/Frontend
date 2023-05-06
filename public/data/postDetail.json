@@ -323,7 +323,7 @@
         "content": "수도권 암장 같이 다녀용",
         "state": 1,
         "category": "취미",
-        "createDate": "2023-04-04",
+        "createdDate": "2023-04-04",
         "postUser": {
           "userId": 2,
           "nickname": "펭귄"
@@ -352,7 +352,7 @@
       "postId": 9,
       "recruitInfo": {
         "title": "예약 결제 플랫폼 개발",
-        "content": "아랍어 관심있으신분 연락주세요",
+        "content": "예약 결제 플랫폼 개발하실 프론트, 백, 디자이너분들 연락주세요",
         "state": 1,
         "category": "프로그래밍",
         "createdDate": "2023-04-06",
@@ -397,6 +397,7 @@
         "content": "같이 하반기 취뽀합시당!",
         "state": 2,
         "category": "취업",
+        "createdDate": "2023-04-06",
         "postUser": {
           "userId": 3,
           "nickname": "JSH"
