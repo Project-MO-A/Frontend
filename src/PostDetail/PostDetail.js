@@ -18,6 +18,7 @@ const PostDetail = () => {
   const [titles, setTitles] = useRecoilState(titleState);
   const [Info, setInfo] = useRecoilState(userInfo);
   const { postId } = useParams();
+  const [user, setUser] = useState(post.userId);
 
   const fetchInfo = async () => {
     await axios
@@ -35,7 +36,12 @@ const PostDetail = () => {
         // })
       )
       .then((response) => {
-        setInfo(response.data);
+        if (response.data) {
+          const currentInfo = response.data.find(
+            (item) => parseInt(item.userId) === parseInt(1)
+          );
+          setInfo(currentInfo);
+        }
       });
   };
 
@@ -63,7 +69,6 @@ const PostDetail = () => {
           setPost(currentData.recruitInfo);
           setIsLoading(false);
           setTitles(currentData.recruitInfo.state);
-          console.log(currentData.recruitInfo);
         }
 
         // setPost(response.data.recruitInfo);

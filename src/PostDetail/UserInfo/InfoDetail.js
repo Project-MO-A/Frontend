@@ -9,7 +9,7 @@ import TransAddress from "./TransAddress";
 
 const InfoDetailDiv = styled.div`
   width: 700px;
-  height: 850px;
+  height: 880px;
   z-index: 999;
   position: absolute;
   left: 50%;
@@ -198,12 +198,24 @@ const InfoDetail = ({
         }
       )
       .then((response) => {
-        setApplicant(response.data.nickname);
-        setPopularityCnt(response.data.popularity);
-        setIntroDetail(response.data.details);
-        setLinks(response.data.link);
-        setLat(response.data.locationLatitude);
-        setLng(response.data.locationLongitude);
+        if (response.data) {
+          const currentUser = response.data.find(
+            (it) => parseInt(it.userId) === parseInt(item.userId)
+          );
+          setApplicant(currentUser.nickname);
+          setPopularityCnt(currentUser.popularity);
+          setIntroDetail(currentUser.details);
+          setLinks(currentUser.link);
+          setLat(currentUser.locationLatitude);
+          setLng(currentUser.locationLongitude);
+        }
+
+        // setApplicant(response.data.nickname);
+        // setPopularityCnt(response.data.popularity);
+        // setIntroDetail(response.data.details);
+        // setLinks(response.data.link);
+        // setLat(response.data.locationLatitude);
+        // setLng(response.data.locationLongitude);
       });
   };
 

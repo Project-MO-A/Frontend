@@ -107,13 +107,11 @@ const PostTitle = () => {
       )
       .then((response) => {
         if (response.data) {
-          const currentAuthor = response.data.map(
+          const currentAuthor = response.data.find(
             (item) => parseInt(item.userId) === parseInt(user.userId)
           );
           setAuthor(currentAuthor);
         }
-
-        // setAuthor(response.data);
       });
   };
 
