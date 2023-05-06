@@ -119,7 +119,7 @@ const HomeTabComponent = ({
       }
 
       axios
-        .get('http://localhost:3000/data/postDetail.json', { headers })
+        .get('http://13.210.190.114:8000/data/postDetail.json', { headers })
         //.get("http://13.125.111.131:8080" + url, { headers })
         .then((response) => {
           //날짜 순 정렬
