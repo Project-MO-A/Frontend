@@ -62,7 +62,7 @@ const AddNotice = () => {
   const fetchNotice = async () => {
     await axios
       .get(
-        `http://localhost:3000/data/postNotice.json`
+        `http://13.210.190.114:8000/data/postNotice.json`
         // .get(`http://13.125.111.131:8080/recruitment/${postId}/notice`,
         //  {
         //   headers: {

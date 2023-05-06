@@ -189,7 +189,7 @@ const InfoDetail = ({
     const params = { userId: item.userId };
     await axios
       .get(
-        "http://localhost:3000/data/userData.json",
+        "http://13.210.190.114:8000/data/userData.json",
         //"http://13.125.111.131:8080/user/info/profile",
 
         {

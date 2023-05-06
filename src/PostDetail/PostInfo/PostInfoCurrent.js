@@ -57,7 +57,7 @@ const PostInfoCurrent = () => {
   const fetchList = async () => {
     await axios
       .get(
-        `http://localhost:3000/data/userActivity.json`
+        `http://13.210.190.114:8000/data/userActivity.json`
         // .get(`http://13.125.111.131:8080/user/info/activity`,
 
         //   {

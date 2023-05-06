@@ -23,7 +23,7 @@ const PostDetail = () => {
   const fetchInfo = async () => {
     await axios
       .get(
-        "http://localhost:3000/data/userData.json"
+        "http://13.210.190.114:8000/data/userData.json"
         // .get("http://13.125.111.131:8080/user/info/profile",
         // {
         //   headers: {
@@ -48,7 +48,7 @@ const PostDetail = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:3000/data/postDetail.json`
+        `http://13.210.190.114:8000/data/postDetail.json`
         // .get(`http://13.125.111.131:8080/recruitment/${postId}`,
         // {
         //   headers: {

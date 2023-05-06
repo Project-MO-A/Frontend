@@ -74,7 +74,7 @@ const ApplicantList = () => {
 
     await axios
       .get(
-        `http://localhost:3000/data/postApplicant.json`
+        `http://13.210.190.114:8000/data/postApplicant.json`
         // .get(`http://13.125.111.131:8080/recruitment/${postId}/apply/members`,
         //  {
         //   headers: {

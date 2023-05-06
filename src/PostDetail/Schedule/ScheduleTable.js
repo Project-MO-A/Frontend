@@ -101,7 +101,7 @@ const ScheduleTable = ({ isEdit }) => {
   const fetchMySchedule = async () => {
     await axios
       .get(
-        `http://localhost:3000/data/postMySchedule.json`
+        `http://13.210.190.114:8000/data/postMySchedule.json`
         // .get(`http://13.125.111.131:8080/recruitment/${postId}/time`,
         //  {
         //   headers: {
@@ -126,7 +126,7 @@ const ScheduleTable = ({ isEdit }) => {
   const fetchSchedule = async () => {
     await axios
       .get(
-        `http://localhost:3000/data/postAllSchedule.json`
+        `http://13.210.190.114:8000/data/postAllSchedule.json`
         // .get(`http://13.125.111.131:8080/recruitment/${postId}/time/all`,
         // {
         //   headers: {

@@ -56,7 +56,7 @@ const MemberList = () => {
   const fetchMember = async () => {
     await axios
       .get(
-        `http://localhost:3000/data/postMember.json`
+        `http://13.210.190.114:8000/data/postMember.json`
         // .get(`http://13.125.111.131:8080/recruitment/${postId}/approved/members`,
         //   {
         //     headers: {
