@@ -9,7 +9,7 @@ const IntroductionDiv = styled.div`
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 18px;
 `;
 
 const HrLine = styled.hr`

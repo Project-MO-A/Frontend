@@ -65,20 +65,26 @@ const Table = styled.table`
   }
 `;
 
-const StarContaienr = styled.div`
-  width: 450px;
+const RateContainer = styled.div`
   display: flex;
-
   margin-bottom: 10px;
   align-items: center;
   h3 {
+    width: 100px;
     margin-right: 10px;
   }
   span {
-    width: 250px;
     font-size: 17px;
     font-weight: 500;
+    margin-left: 10px;
   }
+`;
+
+const StarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
 `;
 
 const IntroContainer = styled.div`
@@ -251,10 +257,11 @@ const InfoDetail = ({
             </tr>
           </tbody>
         </Table>
-        <StarContaienr>
-          <h3>지원자 별점</h3>{" "}
+        <RateContainer>
+          <h3>지원자 별점</h3>
           <span>
-            총 {popularityCnt.count}개의 평가 중
+            총 {popularityCnt.count}개의 평가 중</span>
+            <StarContainer>
             {starArray.map((array, index) => (
               <RatingStar
                 size={20}
@@ -267,8 +274,9 @@ const InfoDetail = ({
                 }
               />
             ))}
-          </span>
-        </StarContaienr>
+          </StarContainer>
+          <span>{popularityCnt.rate && popularityCnt.rate.toFixed(1)}</span>
+        </RateContainer>
         <h3>지원자 상세 소개</h3>
         <IntroContainer
           dangerouslySetInnerHTML={{ __html: introDetail }}
