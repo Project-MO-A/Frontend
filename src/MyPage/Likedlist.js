@@ -36,7 +36,7 @@ const Likedlist = () => {
   const [likedPost, setLikedPost] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/data/userLiked.json", {
+    fetch("http://13.210.190.114:8000/data/userLiked.json", {
     //fetch("http://13.125.111.131:8080/user/info/concern", {
       method: "GET",
       headers: {
