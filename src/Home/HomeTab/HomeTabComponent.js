@@ -122,7 +122,8 @@ const HomeTabComponent = ({
         .get('http://localhost:3000/data/postDetail.json', { headers })
         //.get("http://13.125.111.131:8080" + url, { headers })
         .then((response) => {
-          setPostData(response.data.detail);
+          //날짜 순 정렬
+          setPostData(response.data.detail.sort((a, b) => new Date(b.recruitInfo.createdDate) - new Date(a.recruitInfo.createdDate)));
         })
         .catch((error) => {
           setPostData([]);

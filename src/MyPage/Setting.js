@@ -159,12 +159,12 @@ function Setting() {
       .then((data) => {
         console.log(data);
         setUser({
-          email: data.email,
-          name: data.name,
-          nickname: data.nickname,
+          email: data[0].email,
+          name: data[0].name,
+          nickname: data[0].nickname,
         });
-        setNicknameInput(data.nickname);
-        setUsernameInput(data.name);
+        setNicknameInput(data[0].nickname);
+        setUsernameInput(data[0].name);
         if (data.image !== null) {
           setProfileImg("data:image/jpeg;base64," + data.image);
         }

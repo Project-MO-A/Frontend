@@ -85,7 +85,7 @@ const Header = () => {
         }
       })
       .then((response) => {
-        setUsername(response.data.name);
+        setUsername(response.data[0].name);
       });
   }, [username]);
 
