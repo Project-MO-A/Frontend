@@ -9,7 +9,7 @@ import TransAddress from "./TransAddress";
 
 const InfoDetailDiv = styled.div`
   width: 700px;
-  height: 850px;
+  height: 880px;
   z-index: 999;
   position: absolute;
   left: 50%;
@@ -65,25 +65,31 @@ const Table = styled.table`
   }
 `;
 
-const StarContaienr = styled.div`
-  width: 450px;
+const RateContainer = styled.div`
   display: flex;
-
   margin-bottom: 10px;
   align-items: center;
   h3 {
+    width: 100px;
     margin-right: 10px;
   }
   span {
-    width: 250px;
     font-size: 17px;
     font-weight: 500;
+    margin-left: 10px;
   }
+`;
+
+const StarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
 `;
 
 const IntroContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border: solid #bbb9b9;
   border-radius: 4px;
   width: 500px;
@@ -183,7 +189,8 @@ const InfoDetail = ({
     const params = { userId: item.userId };
     await axios
       .get(
-        "http://13.125.111.131:8080/user/info/profile",
+        "http://localhost:3000/data/userData.json",
+        //"http://13.125.111.131:8080/user/info/profile",
 
         {
           headers: {
@@ -197,12 +204,24 @@ const InfoDetail = ({
         }
       )
       .then((response) => {
-        setApplicant(response.data.nickname);
-        setPopularityCnt(response.data.popularity);
-        setIntroDetail(response.data.details);
-        setLinks(response.data.link);
-        setLat(response.data.locationLatitude);
-        setLng(response.data.locationLongitude);
+        if (response.data) {
+          const currentUser = response.data.find(
+            (it) => parseInt(it.userId) === parseInt(item.userId)
+          );
+          setApplicant(currentUser.nickname);
+          setPopularityCnt(currentUser.popularity);
+          setIntroDetail(currentUser.details);
+          setLinks(currentUser.link);
+          setLat(currentUser.locationLatitude);
+          setLng(currentUser.locationLongitude);
+        }
+
+        // setApplicant(response.data.nickname);
+        // setPopularityCnt(response.data.popularity);
+        // setIntroDetail(response.data.details);
+        // setLinks(response.data.link);
+        // setLat(response.data.locationLatitude);
+        // setLng(response.data.locationLongitude);
       });
   };
 
@@ -238,10 +257,11 @@ const InfoDetail = ({
             </tr>
           </tbody>
         </Table>
-        <StarContaienr>
-          <h3>지원자 별점</h3>{" "}
+        <RateContainer>
+          <h3>지원자 별점</h3>
           <span>
-            총 {popularityCnt.count}개의 평가 중
+            총 {popularityCnt.count}개의 평가 중</span>
+            <StarContainer>
             {starArray.map((array, index) => (
               <RatingStar
                 size={20}
@@ -254,8 +274,9 @@ const InfoDetail = ({
                 }
               />
             ))}
-          </span>
-        </StarContaienr>
+          </StarContainer>
+          <span>{popularityCnt.rate && popularityCnt.rate.toFixed(1)}</span>
+        </RateContainer>
         <h3>지원자 상세 소개</h3>
         <IntroContainer
           dangerouslySetInnerHTML={{ __html: introDetail }}

@@ -36,7 +36,8 @@ const Likedlist = () => {
   const [likedPost, setLikedPost] = useState([]);
 
   useEffect(() => {
-    fetch("http://13.125.111.131:8080/user/info/concern", {
+    fetch("http://localhost:3000/data/userLiked.json", {
+    //fetch("http://13.125.111.131:8080/user/info/concern", {
       method: "GET",
       headers: {
         Authorization: localStorage.getItem("Authorization"),
@@ -51,7 +52,6 @@ const Likedlist = () => {
     })
     .then((data) => {
       setLikedPost(data.writing);
-      console.log(data.writing);
     })
       .catch((error) => {
         console.error("Error:", error);
@@ -70,6 +70,7 @@ const Likedlist = () => {
               title={post.title}
               author={post.author} category={post.category} tags={post.tags} recruitStatus={post.recruitStatus} date={post.createdDate}replyCount={post.replyCount}
               />
+              
             ))}
             </ComponentWrapper>
         }

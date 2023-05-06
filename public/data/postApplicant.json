@@ -1,0 +1,16 @@
+{
+  "list": [
+    {
+      "postId": 3,
+      "applyInfo": [
+        {
+          "userId": 2,
+          "applyId": 1,
+          "nickname": "펭귄",
+          "recruitField": "backend",
+          "status": "대기중"
+        }
+      ]
+    }
+  ]
+}

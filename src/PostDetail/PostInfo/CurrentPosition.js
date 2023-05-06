@@ -15,7 +15,7 @@ const PartSection = styled.p`
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
 `;
 
 const PartSectionCount = styled.p`
@@ -23,7 +23,7 @@ const PartSectionCount = styled.p`
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
 `;
 
 const PartApply = styled.button`

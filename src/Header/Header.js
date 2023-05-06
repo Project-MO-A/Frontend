@@ -64,7 +64,7 @@ const NavItem = styled.li`
 
 const Header = () => {
   const [signInModal, setSignInModal] = useState(false);
-  const [userLogIn, setUserLogIn] = useState(false);
+  const [userLogIn, setUserLogIn] = useState(true);//mock data사용으로 기본 값 true (로그인상태)로 변경
   const [username, setUsername] = useState("");
   useEffect(() => {
     const authorization = window.localStorage.getItem("Authorization");
@@ -77,14 +77,15 @@ const Header = () => {
     }
 
     axios
-      .get(`http://13.125.111.131:8080/user/info/profile`, {
+    .get(`http://localhost:3000/data/userData.json`, {
+     // .get(`http://13.125.111.131:8080/user/info/profile`, {
         headers: {
           Authorization: localStorage.getItem("Authorization"),
           AuthorizationRefresh: localStorage.getItem("AuthorizationRefresh")
         }
       })
       .then((response) => {
-        setUsername(response.data.name);
+        setUsername(response.data[0].name);
       });
   }, [username]);
 

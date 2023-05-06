@@ -12,6 +12,7 @@ const Wrapper = styled.div`
 const Home = () => {
   return (
     <Wrapper>
+      <p style={{ color: 'red', textAlign:"center" }}>현재 백엔드 API 유실로 인해 모든 데이터를 MockData로 대체하여 Tab과 검색과 같은 일부 기능들이 작동하지 않습니다</p>
       <HomeTab />
     </Wrapper>
   );

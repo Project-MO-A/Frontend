@@ -1,0 +1,60 @@
+[
+  {
+    "postId": 6,
+    "notices": [
+      {
+        "noticeId": 1,
+        "content": "4월 27일 최종회의입니다 참석여부 투표부탁드립니다 ",
+        "createdAt": "23.04.24",
+        "checkVote": true,
+        "finishVote": true,
+        "recommendLocation": "recommendLocation",
+        "recommendLocationX": 37.557527,
+        "recommendLocationY": 126.9244669,
+        "members": {
+          "ATTENDANCE": [
+            { "applimentMemberId": 2, "memberName": "규규" },
+            { "applimentMemberId": 3, "memberName": "JSH" },
+            { "applimentMemberId": 1, "memberName": "모아" },
+            { "applimentMemberId": 4, "memberName": "펭귄" }
+          ],
+          "NONATTENDANCE": [],
+          "NONE": []
+        }
+      }
+    ]
+  },
+  {
+    "postId": 7,
+    "notices": [
+      {
+        "noticeId": 1,
+        "content": "5월 4일 목요일 오후2시부터 5시까지 회의합니다 참석여부 투표부탁드립니다 ",
+        "createdAt": "23.04.28",
+        "checkVote": true,
+        "finishVote": false,
+        "recommendLocation": "recommendLocation",
+        "recommendLocationX": 37.5262208,
+        "recommendLocationY": 126.9665712,
+        "members": {
+          "ATTENDANCE": [{ "applimentMemberId": 2, "memberName": "규규" }],
+          "NONATTENDANCE": [{ "applimentMemberId": 3, "memberName": "JSH" }],
+          "NONE": [{ "applimentMemberId": 1, "memberName": "모아" }]
+        }
+      },
+      {
+        "noticeId": 2,
+        "content": "다음주 월요일 오후 7시 디스코드 회의있습니다 ",
+        "createdAt": "23.04.21",
+        "checkVote": false,
+        "finishVote": false,
+        "recommendLocation": "recommendLocation",
+        "members": {
+          "ATTENDANCE": [""],
+          "NONATTENDANCE": [""],
+          "NONE": [""]
+        }
+      }
+    ]
+  }
+]

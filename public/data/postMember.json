@@ -1,0 +1,100 @@
+{
+  "list": [
+    {
+      "postId": 3,
+      "memberInfo": [
+        {
+          "userId": 1,
+          "applyId": 1,
+          "nickname": "모아",
+          "recruitField": "LEADER",
+          "popularity": 0.0,
+          "totalAttend": 0,
+          "attend": 0
+        },
+        {
+          "userId": 3,
+          "applyId": 2,
+          "nickname": "규규",
+          "recruitField": "backend",
+          "popularity": 0.0,
+          "totalAttend": 0,
+          "attend": 0
+        }
+      ]
+    },
+    {
+      "postId": 6,
+      "memberInfo": [
+        {
+          "userId": 1,
+          "applyId": 1,
+          "nickname": "모아",
+          "recruitField": "LEADER",
+          "popularity": 0.0,
+          "totalAttend": 0,
+          "attend": 0
+        },
+        {
+          "userId": 2,
+          "applyId": 2,
+          "nickname": "펭귄",
+          "recruitField": "프론트엔드",
+          "popularity": 4.0,
+          "totalAttend": 10,
+          "attend": 9
+        },
+        {
+          "userId": 3,
+          "applyId": 2,
+          "nickname": "JHS",
+          "recruitField": "백엔드",
+          "popularity": 3.0,
+          "totalAttend": 10,
+          "attend": 8
+        },
+        {
+          "userId": 4,
+          "applyId": 2,
+          "nickname": "규규",
+          "recruitField": "프론트엔드",
+          "popularity": 3.0,
+          "totalAttend": 10,
+          "attend": 9
+        }
+      ]
+    },
+    {
+      "postId": 7,
+      "memberInfo": [
+        {
+          "userId": 1,
+          "applyId": 1,
+          "nickname": "모아",
+          "recruitField": "LEADER",
+          "popularity": 0.0,
+          "totalAttend": 0,
+          "attend": 0
+        },
+        {
+          "userId": 4,
+          "applyId": 2,
+          "nickname": "규규",
+          "recruitField": "배우실분",
+          "popularity": 0.0,
+          "totalAttend": 10,
+          "attend": 4
+        },
+        {
+          "userId": 3,
+          "applyId": 3,
+          "nickname": "JHS",
+          "recruitField": "배우실분",
+          "popularity": 0.0,
+          "totalAttend": 10,
+          "attend": 4
+        }
+      ]
+    }
+  ]
+}

@@ -28,18 +28,31 @@ const PostInfoComment = () => {
 
   const fetchComment = async () => {
     await axios
-      .get(`http://13.125.111.131:8080/recruitment/${postId}`, {
-        headers: {
-          Authorization: window.localStorage.getItem("Authorization"),
+      .get(
+        `http://localhost:3000/data/postDetail.json`
+        // .get(`http://13.125.111.131:8080/recruitment/${postId}`,
+        // {
+        //   headers: {
+        //     Authorization: window.localStorage.getItem("Authorization"),
 
-          AuthorizationRefresh: window.localStorage.getItem(
-            "AuthorizationRefresh"
-          ),
-        },
-      })
+        //     AuthorizationRefresh: window.localStorage.getItem(
+        //       "AuthorizationRefresh"
+        //     ),
+        //   },
+        // }
+      )
       .then((response) => {
-        setNewComment(response.data.repliesInfo.info);
-        setComment_count(response.data.repliesInfo.count);
+        if (response.data.detail) {
+          const currentData = response.data.detail.find(
+            (item) => parseInt(item.postId) === parseInt(postId)
+          );
+
+          setNewComment(currentData.repliesInfo.info);
+          setComment_count(currentData.repliesInfo.count || 0);
+          console.log(currentData);
+        }
+        // setNewComment(response.data.repliesInfo.info);
+        // setComment_count(response.data.repliesInfo.count);
       })
 
       .catch((error) => {

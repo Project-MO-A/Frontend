@@ -9,7 +9,7 @@ const IntroductionDiv = styled.div`
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 18px;
 `;
 
 const HrLine = styled.hr`
@@ -17,7 +17,7 @@ const HrLine = styled.hr`
   margin-top: 25px;
 `;
 
-const PostInfoAbout = ({ curPost }) => {
+const PostInfoAbout = () => {
   const data = useRecoilValue(myPostData);
 
   return (
