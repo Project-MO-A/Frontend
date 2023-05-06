@@ -200,13 +200,13 @@
           {
             "recruitMemberId": 1,
             "recruitField": "프론트엔드",
-            "currentCount": 1,
+            "currentCount": 2,
             "totalCount": 2
           },
           {
             "recruitMemberId": 2,
             "recruitField": "백엔드",
-            "currentCount": 0,
+            "currentCount": 1,
             "totalCount": 2
           },
           {
@@ -270,7 +270,7 @@
       "recruitInfo": {
         "title": "토플 90+ 스터디 모집",
         "content": "토플 고득점 스터디 연락주세요",
-        "state": 3,
+        "state": 2,
         "category": "어학",
         "createdDate": "2023-04-02",
         "postUser": {
@@ -294,7 +294,7 @@
         ]
       },
       "repliesInfo": {
-        "count": 3,
+        "count": 2,
         "info": [
           {
             "replyId": 1,
@@ -312,14 +312,6 @@
                 "subReplies": []
               }
             ]
-          },
-          {
-            "replyId": 3,
-            "userId": 4,
-            "author": "규규",
-            "content": "주량 상관없을까요?",
-            "createDate": "2023-04-03 10:37:54 PM",
-            "subReplies": []
           }
         ]
       }
@@ -361,7 +353,7 @@
       "recruitInfo": {
         "title": "예약 결제 플랫폼 개발",
         "content": "아랍어 관심있으신분 연락주세요",
-        "state": 3,
+        "state": 1,
         "category": "프로그래밍",
         "createdDate": "2023-04-06",
         "postUser": {

@@ -67,28 +67,28 @@ const ScheduleTable = ({ isEdit }) => {
   const [mySchedule, setMySchedule] = useState([]);
   const [memberCnt, setMemberCnt] = useState([]);
 
-  useEffect(() => {
-    fetchMember();
-  }, []);
-  const fetchMember = async () => {
-    await axios
-      .get(
-        `http://13.125.111.131:8080/recruitment/${postId}/approved/members`,
-        {
-          headers: {
-            // 로그인 후 받아오는 인증토큰값
-            Authorization: window.localStorage.getItem("Authorization"),
+  // useEffect(() => {
+  //   fetchMember();
+  // }, []);
+  // const fetchMember = async () => {
+  //   await axios
+  //     .get(
+  //       `http://13.125.111.131:8080/recruitment/${postId}/approved/members`,
+  //       {
+  //         headers: {
+  //           // 로그인 후 받아오는 인증토큰값
+  //           Authorization: window.localStorage.getItem("Authorization"),
 
-            AuthorizationRefresh: window.localStorage.getItem(
-              "AuthorizationRefresh"
-            ),
-          },
-        }
-      )
-      .then((response) => {
-        setMemberCnt(response.data);
-      });
-  };
+  //           AuthorizationRefresh: window.localStorage.getItem(
+  //             "AuthorizationRefresh"
+  //           ),
+  //         },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       setMemberCnt(response.data);
+  //     });
+  // };
 
   useEffect(() => {
     if (!isEdit) {
@@ -114,7 +114,13 @@ const ScheduleTable = ({ isEdit }) => {
         // })
       )
       .then((response) => {
-        setMySchedule(response.data);
+        if (response.data) {
+          const currentMySchedule = response.data.find(
+            (item) => parseInt(postId) === parseInt(item.postId)
+          );
+          setMySchedule(currentMySchedule.timedata);
+        }
+        // setMySchedule(response.data);
       });
   };
   const fetchSchedule = async () => {
@@ -133,7 +139,12 @@ const ScheduleTable = ({ isEdit }) => {
         // })
       )
       .then((response) => {
-        setScheduleData(response.data);
+        if (response.data) {
+          const currentSchedule = response.data.find(
+            (item) => parseInt(postId) === parseInt(item.postId)
+          );
+          setScheduleData(currentSchedule.timedata);
+        }
       });
   };
   useEffect(() => {
@@ -151,26 +162,26 @@ const ScheduleTable = ({ isEdit }) => {
     }
   }, [scheduleData]);
 
-  const ScheduleUpdate = async (schedule) => {
-    await axios.put(
-      `http://13.125.111.131:8080/recruitment/${postId}/time`,
-      {
-        possibleTimeDataList: schedule,
-      },
-      {
-        headers: {
-          Authorization: window.localStorage.getItem("Authorization"),
+  // const ScheduleUpdate = async (schedule) => {
+  //   await axios.put(
+  //     `http://13.125.111.131:8080/recruitment/${postId}/time`,
+  //     {
+  //       possibleTimeDataList: schedule,
+  //     },
+  //     {
+  //       headers: {
+  //         Authorization: window.localStorage.getItem("Authorization"),
 
-          AuthorizationRefresh: window.localStorage.getItem(
-            "AuthorizationRefresh"
-          ),
-        },
-      }
-    );
+  //         AuthorizationRefresh: window.localStorage.getItem(
+  //           "AuthorizationRefresh"
+  //         ),
+  //       },
+  //     }
+  //   );
 
-    fetchMySchedule();
-    fetchSchedule();
-  };
+  //   fetchMySchedule();
+  //   fetchSchedule();
+  // };
 
   const getId = (getTime) => {
     if (scheduleData?.length !== 0) {
@@ -190,7 +201,7 @@ const ScheduleTable = ({ isEdit }) => {
 
   const scheduleHandler = (newSchedule) => {
     setMySchedule(newSchedule);
-    ScheduleUpdate(newSchedule);
+    // ScheduleUpdate(newSchedule);
   };
 
   const ResetSchedule = () => {

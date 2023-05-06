@@ -1,13 +1,13 @@
 {
   "list": [
     {
-      "postId": 7,
+      "postId": 3,
       "applyInfo": [
         {
           "userId": 2,
-          "applyId": 3,
+          "applyId": 1,
           "nickname": "펭귄",
-          "recruitField": "배우실분",
+          "recruitField": "backend",
           "status": "대기중"
         }
       ]

@@ -82,8 +82,6 @@ const PostTitle = () => {
   const [user, setUser] = useState(data.postUser);
   const [Author, setAuthor] = useState(0);
 
-  const URL = process.env.REACT_APP_URL;
-
   useEffect(() => {
     fetchPostUserInfo();
   }, []);
@@ -108,7 +106,14 @@ const PostTitle = () => {
         // params
       )
       .then((response) => {
-        setAuthor(response.data);
+        if (response.data) {
+          const currentAuthor = response.data.map(
+            (item) => parseInt(item.userId) === parseInt(user.userId)
+          );
+          setAuthor(currentAuthor);
+        }
+
+        // setAuthor(response.data);
       });
   };
 
