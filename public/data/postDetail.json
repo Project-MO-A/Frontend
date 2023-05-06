@@ -119,7 +119,7 @@
           {
             "recruitMemberId": 1,
             "recruitField": "배우실분",
-            "currentCount": 0,
+            "currentCount": 2,
             "totalCount": 2
           },
           {
@@ -206,7 +206,7 @@
           {
             "recruitMemberId": 2,
             "recruitField": "백엔드",
-            "currentCount": 1,
+            "currentCount": 2,
             "totalCount": 2
           },
           {
@@ -282,7 +282,7 @@
           {
             "recruitMemberId": 1,
             "recruitField": "배우실분",
-            "currentCount": 2,
+            "currentCount": 3,
             "totalCount": 3
           },
           {
