@@ -1,6 +1,6 @@
 # MO:A
 
-:link:[Frontend-Server](http://13.210.190.114:8000/, "프론트엔드 서버")
+:link:[Frontend-Server](http://13.210.190.114:8000/ "프론트엔드 서버")
 <br/> <br/>
 :link:[피그마](https://www.figma.com/file/NCzggisY1es5EzSPVVWGJV/MO%3AA?node-id=0%3A1&t=9gm0gtcMZw5Dzarg-1, "피그마 디자인")
 
